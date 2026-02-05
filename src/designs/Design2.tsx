@@ -296,8 +296,8 @@ export default function Design2() {
                 <div className="absolute inset-8 rounded-full border-2 border-dashed border-[#f97316]/25" />
                 <div className="absolute inset-12 rounded-full bg-gradient-to-br from-[#2563eb]/10 to-[#8b5cf6]/10" />
                 <div className="absolute inset-16 rounded-full bg-gradient-to-br from-[#8b5cf6]/15 to-[#f97316]/15" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-6xl sm:text-7xl">🧮</span>
+                <div className="absolute inset-8 rounded-full overflow-hidden">
+                  <img src="/ola.jpg" alt="Ola" className="w-full h-full object-cover object-top" />
                 </div>
                 <div
                   className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-br from-[#f97316] to-[#ef4444] rounded-xl rotate-12 flex items-center justify-center text-white font-bold text-lg"
@@ -323,15 +323,17 @@ export default function Design2() {
               </h2>
               <div className="space-y-5 text-lg text-[#475569] leading-relaxed">
                 <p>
-                  Jestem studentką matematyki z ponad dwuletnim doświadczeniem w
+                  Cześć, jestem Ola! Studentka matematyki z ponad dwuletnim doświadczeniem w
                   nauczaniu — zarówno indywidualnym, jak i grupowym.
                 </p>
                 <p>
-                  Obecnie skupiam się na lekcjach indywidualnych, bo wierzę, że
-                  każdy uczeń potrzebuje własnego tempa i podejścia. Uczę
-                  zarówno online, jak i stacjonarnie.
+                  Uczyłam w Matplanecie — jednej z najpopularniejszych szkół
+                  matematycznych w Polsce. Teraz ruszam na swoich zasadach
+                  i otwieram własną praktykę korepetycyjną, żeby dać każdemu
+                  uczniowi dokładnie tyle uwagi, ile potrzebuje.
                 </p>
                 <p>
+                  Skupiam się na lekcjach 1 na 1 — online i stacjonarnie.
                   Przygotowuję do egzaminów — ósmoklasisty, matury podstawowej i
                   rozszerzonej. Wiem, jak stresujące mogą być egzaminy, dlatego
                   dbam nie tylko o wiedzę, ale też o pewność siebie ucznia.
@@ -642,7 +644,7 @@ export default function Design2() {
             umów się jeszcze dziś!
           </p>
           <a
-            href="mailto:kontakt@matma.pro"
+            href="mailto:olamatysek@gmail.com"
             className="inline-block bg-white text-[#2563eb] font-bold text-lg sm:text-xl px-10 sm:px-14 py-4 sm:py-5 rounded-full shadow-xl hover:shadow-2xl hover:bg-[#fbbf24] hover:text-[#0f172a] hover:scale-105 transition-all duration-300"
           >
             Umów darmową lekcję próbną
@@ -679,10 +681,10 @@ export default function Design2() {
                 <li className="flex items-center gap-3">
                   <span>✉</span>
                   <a
-                    href="mailto:kontakt@matma.pro"
+                    href="mailto:olamatysek@gmail.com"
                     className="hover:text-white transition-colors duration-200"
                   >
-                    kontakt@matma.pro
+                    olamatysek@gmail.com
                   </a>
                 </li>
                 <li className="flex items-center gap-3">

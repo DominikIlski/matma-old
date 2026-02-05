@@ -242,13 +242,11 @@ function Design5() {
           </h2>
 
           <div className="grid md:grid-cols-[auto_1fr] gap-12 items-start">
-            <div className="hidden md:flex flex-col items-center justify-center py-8">
-              <div
-                className="text-[#84cc16] text-[10rem] leading-none font-thin select-none"
-                style={{ fontFamily: "serif" }}
-              >
-                &#123;
+            <div className="hidden md:block py-8">
+              <div className="w-52 h-64 overflow-hidden rounded-2xl border-2 border-[#84cc16]/30">
+                <img src="/ola.jpg" alt="Ola" className="w-full h-full object-cover object-top" />
               </div>
+              <p className="text-center mt-3 text-[#84cc16] font-bold text-lg uppercase tracking-widest">Ola</p>
             </div>
 
             <div
@@ -258,26 +256,30 @@ function Design5() {
                 <span
                   className="text-white font-bold border-b-2 border-[#84cc16] pb-0.5"
                 >
-                  Studentka matematyki.
+                  Ola. Studentka matematyki.
                 </span>{" "}
-                Korepetytorka z pasj&#261;.
+                Korepetytorka z pasją.
               </p>
               <p className="text-lg md:text-xl text-gray-400 leading-relaxed mb-6">
-                2 lata do&#347;wiadczenia w nauczaniu indywidualnym i grupowym.
+                2 lata doświadczenia. Uczyłam w{" "}
+                <span className="text-white font-bold border-b-2 border-[#84cc16] pb-0.5">
+                  Matplanecie
+                </span>{" "}
+                — jednej z najpopularniejszych szkół matematycznych w Polsce.
               </p>
               <p className="text-lg md:text-xl text-gray-400 leading-relaxed mb-6">
-                Teraz skupiam si&#281; na{" "}
+                Teraz ruszam na swoich zasadach. Skupiam się na{" "}
                 <span
                   className="text-white font-bold border-b-2 border-[#06b6d4] pb-0.5"
                 >
                   lekcjach 1 na 1
                 </span>{" "}
-                &#8212; bo wtedy widz&#281; najlepsze efekty.
+                — bo wtedy widzę najlepsze efekty.
               </p>
               <p className="text-lg md:text-xl text-gray-400 leading-relaxed">
-                Ucz&#281; online i stacjonarnie.{" "}
+                Uczę online i stacjonarnie.{" "}
                 <span className="text-[#84cc16] font-semibold">
-                  Przygotowuj&#281; do egzamin&#243;w.
+                  Przygotowuję do egzaminów.
                 </span>
               </p>
             </div>
@@ -520,7 +522,7 @@ function Design5() {
           </p>
 
           <a
-            href="mailto:kontakt@example.com"
+            href="mailto:olamatysek@gmail.com"
             className="glow-button inline-block bg-[#84cc16] text-black font-extrabold text-xl md:text-2xl px-12 py-6 rounded-lg uppercase tracking-wider mb-12"
             style={{ boxShadow: glowLimeButton }}
           >
@@ -528,7 +530,7 @@ function Design5() {
           </a>
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-gray-500 font-mono text-lg">
-            <span>kontakt@example.com</span>
+            <span>olamatysek@gmail.com</span>
             <span className="hidden md:inline text-gray-700">|</span>
             <span>+48 123 456 789</span>
           </div>

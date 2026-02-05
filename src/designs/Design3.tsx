@@ -79,9 +79,9 @@ const pullQuote =
   "\u201EMatematyka to nie talent\u00A0\u2014\u00A0to umiejętność, którą można rozwinąć.\u201D";
 
 const bioParas = [
-  "Studentka matematyki z pasją do nauczania. Od ponad dwóch lat prowadzę indywidualne korepetycje, pomagając uczniom zrozumieć matematykę \u2014 nie tylko zapamiętać wzory.",
-  "Specjalizuję się w przygotowaniu do egzaminów: ósmoklasisty, matury podstawowej i rozszerzonej. Każdy uczeń otrzymuje indywidualny plan dopasowany do jego poziomu i celów.",
-  "Prowadzę zajęcia online oraz stacjonarnie \u2014 bo wygoda nauki jest równie ważna jak jej jakość.",
+  "Jestem Ola \u2014 studentka matematyki z pasją do nauczania. Od ponad dwóch lat prowadzę korepetycje, pomagając uczniom zrozumieć matematykę \u2014 nie tylko zapamiętać wzory.",
+  "Doświadczenie zdobywałam m.in. w Matplanecie \u2014 jednej z najbardziej rozpoznawalnych szkół matematycznych. Teraz zaczynam na własnych zasadach, bo chcę poświęcić każdemu uczniowi pełną uwagę.",
+  "Specjalizuję się w lekcjach indywidualnych 1 na 1 i przygotowaniu do egzaminów: ósmoklasisty, matury podstawowej i rozszerzonej. Prowadzę zajęcia online oraz stacjonarnie.",
 ];
 
 const stats = [
@@ -173,7 +173,10 @@ export default function Design3() {
 
       <section className="py-24 lg:py-32 px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5 flex flex-col items-start gap-10">
+            <div className="w-40 h-52 overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
+              <img src="/ola.jpg" alt="Ola" className="w-full h-full object-cover object-top" />
+            </div>
             <p className="text-2xl sm:text-3xl lg:text-4xl font-light italic leading-snug text-[#111111]/80">
               {pullQuote}
             </p>
@@ -371,13 +374,13 @@ export default function Design3() {
             Pierwsza konsultacja jest bezpłatna.
           </p>
           <a
-            href="mailto:kontakt@korepetycje.pl"
+            href="mailto:olamatysek@gmail.com"
             className="mt-10 inline-block bg-[#10b981] text-white text-sm font-semibold tracking-wide px-10 py-4 hover:opacity-90 transition-opacity duration-300"
           >
             Umów się
           </a>
           <div className="mt-8 flex items-center justify-center gap-4 text-xs text-white/30">
-            <span>kontakt@korepetycje.pl</span>
+            <span>olamatysek@gmail.com</span>
             <span>{"\u00B7"}</span>
             <span>+48 123 456 789</span>
           </div>

@@ -326,6 +326,13 @@ function Design1() {
               </h2>
               <div className="w-16 h-[2px] bg-[#c9a96e] mb-8" />
 
+              <div className="mb-8">
+                <div className="w-56 h-56 mx-auto lg:mx-0 overflow-hidden border-2 border-[#c9a96e]/30">
+                  <img src="/ola.jpg" alt="Ola — korepetytorka matematyki" className="w-full h-full object-cover object-top" />
+                </div>
+                <p className="text-center lg:text-left mt-3 font-[Playfair_Display] text-lg text-[#c9a96e]">Ola</p>
+              </div>
+
               <div className="bg-[#faf8f5] border-l-2 border-[#c9a96e] p-6 mb-8">
                 <p className="font-[Playfair_Display] text-lg italic text-[#1a1a2e]/80 leading-relaxed">
                   „Wierzę, że każdy uczeń może polubić matematykę — wystarczy
@@ -364,23 +371,23 @@ function Design1() {
             <div className="lg:col-span-7">
               <div className="space-y-6 text-[#1a1a2e]/70 leading-relaxed text-[15px]">
                 <p>
-                  Jestem studentką matematyki z prawdziwą pasją do tego
+                  Cześć, mam na imię Ola! Jestem studentką matematyki z prawdziwą pasją do tego
                   przedmiotu. Od ponad dwóch lat prowadzę korepetycje — zarówno
                   indywidualne, jak i grupowe — pomagając uczniom na różnych
                   etapach edukacji odnaleźć drogę przez zawiłości matematyki.
                 </p>
                 <p>
-                  Swoje doświadczenie zdobywałam pracując z uczniami szkół
-                  podstawowych, licealistami oraz maturzystami. Każdy z nich
-                  wymagał innego podejścia, innego tempa i innej metody
-                  tłumaczenia — i to właśnie ta różnorodność nauczyła mnie, jak
-                  ważne jest indywidualne podejście do każdego ucznia.
+                  Doświadczenie zdobywałam między innymi w Matplanecie — jednej
+                  z najbardziej rozpoznawalnych szkół matematycznych w Polsce.
+                  Praca z dziesiątkami uczniów na różnych poziomach nauczyła mnie,
+                  jak ważne jest indywidualne podejście — inne tempo, inna metoda,
+                  inny sposób tłumaczenia dla każdego.
                 </p>
                 <p>
-                  Obecnie koncentruję się na lekcjach indywidualnych, bo to one
-                  dają najlepsze efekty. Podczas zajęć jeden-na-jeden mogę w
-                  pełni skupić się na potrzebach ucznia, dostosować tempo pracy i
-                  natychmiast reagować na pojawiające się trudności.
+                  Teraz zaczynam działać na własnych zasadach. Otwieram swoją
+                  praktykę korepetycyjną, bo chcę poświęcić każdemu uczniowi
+                  tyle uwagi, ile naprawdę potrzebuje. Skupiam się na lekcjach
+                  indywidualnych 1 na 1 — bo to one dają najlepsze efekty.
                 </p>
                 <p>
                   Prowadzę zajęcia zarówno online, jak i stacjonarnie — bo
@@ -732,7 +739,7 @@ function Design1() {
                   <p className="text-[#1a1a2e]/40 text-xs uppercase tracking-wider mb-1">
                     Email
                   </p>
-                  <p className="font-medium">kontakt@matematyka-korepetycje.pl</p>
+                  <p className="font-medium">olamatysek@gmail.com</p>
                 </div>
                 <div>
                   <p className="text-[#1a1a2e]/40 text-xs uppercase tracking-wider mb-1">

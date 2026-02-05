@@ -183,26 +183,29 @@ export default function Design4() {
 
       <section className="py-20 px-6 bg-[#fffbf5]">
         <div className="max-w-3xl mx-auto text-center">
-          <div className="mx-auto w-48 h-48 rounded-full border-4 border-dashed border-[#c2703e]/60 flex items-center justify-center mb-10 bg-[#fef3e2]/50">
-            <span className="text-5xl font-bold text-[#c2703e]/40 font-[Sora]">
-              A
-            </span>
+          <div className="mx-auto w-48 h-48 rounded-full border-4 border-dashed border-[#c2703e]/60 overflow-hidden mb-10">
+            <img src="/ola.jpg" alt="Ola" className="w-full h-full object-cover object-top" />
           </div>
+          <p className="font-[Caveat] text-3xl text-[#c2703e] mb-4">Ola</p>
 
           <h2 className="text-3xl sm:text-4xl font-bold mb-8">O mnie</h2>
 
           <div className="text-lg leading-relaxed text-[#3d2c2e]/85 space-y-4 text-left sm:text-center">
             <p>
-              Cześć! Jestem studentką matematyki i od ponad 2 lat pomagam
-              uczniom zrozumieć (i polubić!) ten przedmiot. Prowadzę
-              indywidualne korepetycje — bo wierzę, że każdy uczeń zasługuje
-              na pełną uwagę i plan nauki szyty na miarę.
+              Cześć, jestem Ola! Jestem studentką matematyki i od ponad 2 lat pomagam
+              uczniom zrozumieć (i polubić!) ten przedmiot.
             </p>
             <p>
-              Uczę zarówno online, jak i stacjonarnie. Niezależnie od formy,
-              stawiam na cierpliwość, zrozumienie i budowanie pewności siebie.
-              Bo matematyka to nie talent — to umiejętność, której można się
-              nauczyć.
+              Uczyłam w Matplanecie — jednej z najpopularniejszych szkół
+              matematycznych w Polsce. Teraz zaczynam działać samodzielnie,
+              na własnych zasadach — bo chcę poświęcić każdemu uczniowi
+              tyle uwagi, ile naprawdę potrzebuje.
+            </p>
+            <p>
+              Prowadzę indywidualne korepetycje 1 na 1, zarówno online,
+              jak i stacjonarnie. Stawiam na cierpliwość, zrozumienie
+              i budowanie pewności siebie. Bo matematyka to nie talent —
+              to umiejętność, której można się nauczyć.
             </p>
           </div>
 
@@ -491,7 +494,7 @@ export default function Design4() {
           </p>
 
           <a
-            href="mailto:kontakt@example.com"
+            href="mailto:olamatysek@gmail.com"
             className="inline-block bg-[#c2703e] text-white font-semibold text-lg px-12 py-4 rounded-2xl shadow-lg hover:bg-[#a85d32] hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 mb-8"
           >
             Napisz do mnie
@@ -516,7 +519,7 @@ export default function Design4() {
                   d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                 />
               </svg>
-              <span>kontakt@example.com</span>
+              <span>olamatysek@gmail.com</span>
             </div>
             <div className="flex items-center gap-2">
               <svg
@@ -553,7 +556,7 @@ export default function Design4() {
               Kontakt
             </a>
             <span className="text-white/30">|</span>
-            <span>kontakt@example.com</span>
+            <span>olamatysek@gmail.com</span>
           </div>
           <p className="text-sm text-white/40">
             &copy; {new Date().getFullYear()} Wszelkie prawa zastrzeżone
