@@ -154,27 +154,26 @@ const stationaryFeatures = [
 ];
 
 const bioParas = [
-  "Cześć, mam na imię Ola! Jestem studentką matematyki z prawdziwą pasją do tego przedmiotu. Od ponad dwóch lat prowadzę korepetycje — zarówno indywidualne, jak i grupowe — pomagając uczniom na różnych etapach edukacji odnaleźć drogę przez zawiłości matematyki.",
-  "Doświadczenie zdobywałam między innymi w Matplanecie — jednej z najbardziej rozpoznawalnych szkół matematycznych w Polsce. Praca z dziesiątkami uczniów na różnych poziomach nauczyła mnie, jak ważne jest indywidualne podejście — inne tempo, inna metoda, inny sposób tłumaczenia dla każdego.",
-  "Teraz zaczynam działać na własnych zasadach. Otwieram swoją praktykę korepetycyjną, bo chcę poświęcić każdemu uczniowi tyle uwagi, ile naprawdę potrzebuje. Skupiam się na lekcjach indywidualnych 1 na 1 — bo to one dają najlepsze efekty.",
+  "Cześć, mam na imię Ola! Jestem studentką matematyki z prawdziwą pasją do tego przedmiotu. Od ponad roku prowadzę korepetycje — zarówno indywidualne, jak i grupowe — pomagając uczniom na różnych etapach edukacji odnaleźć drogę przez zawiłości matematyki.",
+  "Doświadczenie zdobywałam między innymi w Matplanecie — jednej z najbardziej rozpoznawalnych szkół matematycznych w Polsce. To tam odkryłam, że uczniowie wracają nie ze względu na markę szkoły, ale na relację z konkretnym nauczycielem. Rodzice i uczniowie wybierali moje zajęcia ponownie — bo czuli, że naprawdę rozumiem, z czym uczeń się mierzy.",
+  "Mam dar dostrzegania tego, co umyka innym — potrafię szybko zidentyfikować, w którym momencie uczeń się gubi i dlaczego. To pozwala mi trafiać w sedno problemu zamiast tracić czas na powtarzanie tego, co już działa. Właśnie dlatego zdecydowałam się działać na własnych zasadach — by poświęcić każdemu uczniowi tyle uwagi, ile naprawdę potrzebuje.",
   "Prowadzę zajęcia zarówno online, jak i stacjonarnie — bo wierzę, że wygodna forma nauki to fundament skutecznych korepetycji. Niezależnie od tego, czy pracujemy przez interaktywną tablicę, czy spotykamy się osobiście, cel jest zawsze ten sam: zrozumienie, pewność siebie i lepsze wyniki.",
 ];
 
 const stats = [
-  { value: "2+", label: "lata doświadczenia" },
-  { value: "100+", label: "godzin korepetycji" },
+  { value: "1+", label: "lat doświadczenia" },
+  { value: "300+", label: "godzin korepetycji" },
   { value: "1:1", label: "indywidualne podejście" },
 ];
 
 const marginFormulas = [
   { text: "a\u00B2 + b\u00B2 = c\u00B2", top: "12%", right: "-2%" },
-  { text: "\u222Bf(x)dx", top: "28%", right: "-4%" },
-  { text: "lim x\u2192\u221E", top: "44%", right: "-1%" },
-  { text: "\u0394 = b\u00B2 \u2212 4ac", top: "60%", right: "-3%" },
-  { text: "\u2211 n=1..\u221E", top: "76%", right: "-2%" },
-  { text: "sin\u00B2\u03B1 + cos\u00B2\u03B1 = 1", top: "20%", left: "-3%" },
-  { text: "e^(i\u03C0) + 1 = 0", top: "50%", left: "-2%" },
-  { text: "P(A|B) = P(B|A)\u00B7P(A)/P(B)", top: "80%", left: "-4%" },
+  { text: "(a + b)\u00B2 = a\u00B2 + 2ab + b\u00B2", top: "28%", right: "-4%" },
+  { text: "\u0394 = b\u00B2 \u2212 4ac", top: "44%", right: "-1%" },
+  { text: "P = \u03C0r\u00B2", top: "60%", right: "-3%" },
+  { text: "sin \u03B1 = a/c", top: "76%", right: "-2%" },
+  { text: "f(x) = ax\u00B2 + bx + c", top: "20%", left: "-3%" },
+  { text: "log\u2090b = c", top: "50%", left: "-2%" },
 ];
 
 const PencilUnderline = () => (
@@ -221,6 +220,7 @@ export default function Design3() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeExam, setActiveExam] = useState(0);
   const [scrolled, setScrolled] = useState(false);
+  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -275,7 +275,7 @@ export default function Design3() {
             className="font-serif-head text-xl lg:text-2xl font-medium tracking-tight"
             style={{ fontFamily: "'Newsreader', serif" }}
           >
-            matma<span className="text-[#d4564e]">.</span>
+            amatysek<span className="text-[#d4564e]">.</span>
           </a>
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
@@ -307,7 +307,7 @@ export default function Design3() {
               className="text-xl font-medium tracking-tight"
               style={{ fontFamily: "'Newsreader', serif" }}
             >
-              matma<span className="text-[#d4564e]">.</span>
+              amatysek<span className="text-[#d4564e]">.</span>
             </span>
             <button
               onClick={() => setMenuOpen(false)}
@@ -344,7 +344,7 @@ export default function Design3() {
             </nav>
           </div>
           <div className="px-6 pb-8 text-xs text-[#475569]/60">
-            olamatysek@gmail.com
+            aleksandra.matysek@icloud.com
           </div>
         </div>
       )}
@@ -352,15 +352,14 @@ export default function Design3() {
       <section className="relative min-h-screen flex items-center overflow-hidden">
         <div
           className="absolute inset-0 ruled-lines opacity-40"
-          style={{ backgroundPositionY: "8px" }}
+          style={{ backgroundPositionY: "17px" }}
         />
-        <div className="absolute left-[4%] top-0 bottom-0 w-[1px] bg-[#d4564e]/15 hidden lg:block" />
-        <div className="absolute left-[5.5%] top-0 bottom-0 w-[1px] bg-[#d4564e]/10 hidden lg:block" />
+        <div className="absolute right-[4%] top-0 bottom-0 w-[1px] bg-[#d4564e]/40 hidden lg:block" />
 
         {marginFormulas.slice(0, 5).map((f, i) => (
           <span
             key={i}
-            className="absolute hidden xl:block text-[#475569]/[0.07] text-sm select-none pointer-events-none formula-float"
+            className="absolute hidden xl:block text-[#475569]/[0.12] text-sm select-none pointer-events-none formula-float"
             style={{
               fontFamily: "'Newsreader', serif",
               fontStyle: "italic",
@@ -407,7 +406,7 @@ export default function Design3() {
                 </a>
                 <a
                   href="#o-mnie"
-                  className="inline-flex items-center justify-center border border-[#1e293b]/20 text-sm font-medium px-8 py-3.5 text-[#1e293b] hover:border-[#1e293b]/40 transition-colors duration-300"
+                  className="inline-flex items-center justify-center border border-[#1e293b]/20 bg-[#faf6f1] text-sm font-medium px-8 py-3.5 text-[#1e293b] hover:border-[#1e293b]/40 transition-colors duration-300"
                 >
                   Poznaj mnie
                 </a>
@@ -430,15 +429,16 @@ export default function Design3() {
             </div>
             <div className="hidden lg:flex flex-1 items-center justify-center">
               <div
-                className="text-[#1e293b]/[0.04] leading-relaxed text-right space-y-3 select-none"
+                className="text-[#1e293b]/[0.08] leading-relaxed text-right space-y-3 select-none"
                 style={{ fontFamily: "'Newsreader', serif", fontStyle: "italic" }}
               >
                 <p className="text-5xl">a{"\u00B2"} + b{"\u00B2"} = c{"\u00B2"}</p>
-                <p className="text-4xl">{"\u222B"}f(x)dx</p>
+                <p className="text-4xl">(a + b){"\u00B2"} = a{"\u00B2"} + 2ab + b{"\u00B2"}</p>
                 <p className="text-3xl">{"\u0394"} = b{"\u00B2"} {"\u2212"} 4ac</p>
-                <p className="text-2xl">lim x{"\u2192"}{"\u221E"}</p>
-                <p className="text-xl">{"\u2211"} n=1...{"\u221E"}</p>
-                <p className="text-lg">sin{"\u00B2"}{"\u03B1"} + cos{"\u00B2"}{"\u03B1"} = 1</p>
+                <p className="text-2xl">f(x) = ax{"\u00B2"} + bx + c</p>
+                <p className="text-xl">P = {"\u03C0"}r{"\u00B2"}</p>
+                <p className="text-lg">sin {"\u03B1"} = a/c</p>
+                <p className="text-base">log{"\u2090"}b = c</p>
               </div>
             </div>
           </div>
@@ -522,7 +522,7 @@ export default function Design3() {
                   className="text-lg lg:text-xl italic text-[#1e293b]/80 leading-relaxed"
                   style={{ fontFamily: "'Newsreader', serif" }}
                 >
-                  {"\u201E"}Wierzę, że każdy uczeń może polubić matematykę — wystarczy odpowiedni przewodnik i cierpliwość.{"\u201D"}
+                  {"\u201E"}Najważniejsze to zauważyć, w którym momencie uczeń się gubi — reszta to już wspólna praca.{"\u201D"}
                 </p>
               </blockquote>
             </div>
@@ -738,6 +738,7 @@ export default function Design3() {
           className="absolute inset-0 ruled-lines opacity-20"
           style={{ backgroundPositionY: "8px" }}
         />
+        <div className="absolute right-[4%] top-0 bottom-0 w-[1px] bg-[#d4564e]/40 hidden lg:block" />
         <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-16">
             <SectionNumber num="04" />
@@ -791,11 +792,6 @@ export default function Design3() {
                       {step.description}
                     </p>
                   </div>
-                  {i < steps.length - 1 && (
-                    <div className="hidden lg:block shrink-0 self-center text-[#1e293b]/15 text-2xl">
-                      {"\u2192"}
-                    </div>
-                  )}
                 </div>
               ))}
             </div>
@@ -953,11 +949,11 @@ export default function Design3() {
                     Email
                   </p>
                   <a
-                    href="mailto:olamatysek@gmail.com"
+                    href="mailto:aleksandra.matysek@icloud.com"
                     className="text-lg font-medium text-[#1e293b] hover:text-[#d4564e] transition-colors duration-300"
                     style={{ fontFamily: "'Newsreader', serif" }}
                   >
-                    olamatysek@gmail.com
+                    aleksandra.matysek@icloud.com
                   </a>
                 </div>
                 <div>
@@ -995,69 +991,90 @@ export default function Design3() {
                   boxShadow: "2px 4px 20px rgba(0,0,0,0.06)",
                 }}
               >
-                <div className="absolute left-6 top-0 bottom-0 w-[1px] bg-[#d4564e]/15" />
+                <div className="absolute left-6 top-0 bottom-0 w-[1px] bg-[#d4564e]/40" />
 
                 <h3
-                  className="text-xl font-medium tracking-tight mb-8"
-                  style={{ fontFamily: "'Newsreader', serif" }}
+                  className="text-xl font-medium tracking-tight"
+                  style={{ fontFamily: "'Newsreader', serif", lineHeight: "32px", paddingTop: "7px" }}
                 >
                   Wyślij wiadomość
                 </h3>
-                <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
-                  <div>
+                <form onSubmit={async (e) => {
+                  e.preventDefault();
+                  setFormStatus("sending");
+                  const form = e.currentTarget;
+                  const data = Object.fromEntries(new FormData(form));
+                  try {
+                    const res = await fetch("/api/contact", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify(data),
+                    });
+                    if (!res.ok) throw new Error();
+                    setFormStatus("sent");
+                    form.reset();
+                  } catch {
+                    setFormStatus("error");
+                  }
+                }}>
+                  {[
+                    { label: "Imię i nazwisko", name: "name", type: "text", placeholder: "Jan Kowalski" },
+                    { label: "Email", name: "email", type: "email", placeholder: "jan@email.com" },
+                    { label: "Telefon", name: "phone", type: "tel", placeholder: "+48 000 000 000" },
+                  ].map((field) => (
+                    <div key={field.label} style={{ height: "64px" }}>
+                      <label
+                        className="block text-[10px] font-semibold tracking-[0.2em] uppercase text-[#475569]/50"
+                        style={{ lineHeight: "32px" }}
+                      >
+                        {field.label}
+                      </label>
+                      <input
+                        name={field.name}
+                        type={field.type}
+                        required={field.name !== "phone"}
+                        className="w-full bg-transparent border-none text-sm text-[#1e293b] outline-none placeholder:text-[#475569]/30"
+                        style={{ lineHeight: "32px", height: "32px" }}
+                        placeholder={field.placeholder}
+                      />
+                    </div>
+                  ))}
+                  <div style={{ height: "160px" }}>
                     <label
-                      className="block text-[10px] font-semibold tracking-[0.2em] uppercase text-[#475569]/50 mb-2"
-                    >
-                      Imię i nazwisko
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full bg-transparent border-b border-[#c8bfb4] py-3 text-sm text-[#1e293b] outline-none focus:border-[#d4564e] transition-colors duration-300 placeholder:text-[#475569]/30"
-                      placeholder="Jan Kowalski"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      className="block text-[10px] font-semibold tracking-[0.2em] uppercase text-[#475569]/50 mb-2"
-                    >
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      className="w-full bg-transparent border-b border-[#c8bfb4] py-3 text-sm text-[#1e293b] outline-none focus:border-[#d4564e] transition-colors duration-300 placeholder:text-[#475569]/30"
-                      placeholder="jan@email.com"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      className="block text-[10px] font-semibold tracking-[0.2em] uppercase text-[#475569]/50 mb-2"
-                    >
-                      Telefon
-                    </label>
-                    <input
-                      type="tel"
-                      className="w-full bg-transparent border-b border-[#c8bfb4] py-3 text-sm text-[#1e293b] outline-none focus:border-[#d4564e] transition-colors duration-300 placeholder:text-[#475569]/30"
-                      placeholder="+48 000 000 000"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      className="block text-[10px] font-semibold tracking-[0.2em] uppercase text-[#475569]/50 mb-2"
+                      className="block text-[10px] font-semibold tracking-[0.2em] uppercase text-[#475569]/50"
+                      style={{ lineHeight: "32px" }}
                     >
                       Wiadomość
                     </label>
                     <textarea
+                      name="message"
+                      required
                       rows={4}
-                      className="w-full bg-transparent border-b border-[#c8bfb4] py-3 text-sm text-[#1e293b] outline-none focus:border-[#d4564e] transition-colors duration-300 resize-none placeholder:text-[#475569]/30"
+                      className="w-full bg-transparent border-none text-sm text-[#1e293b] outline-none resize-none placeholder:text-[#475569]/30"
+                      style={{ lineHeight: "32px", height: "128px" }}
                       placeholder="Opisz, jak mogę Ci pomóc..."
                     />
                   </div>
-                  <button
-                    type="submit"
-                    className="bg-[#1e293b] text-white text-sm font-medium px-8 py-3.5 hover:bg-[#d4564e] transition-colors duration-300 w-full lg:w-auto"
-                  >
-                    Wyślij wiadomość
-                  </button>
+                  <div style={{ height: "64px", display: "flex", alignItems: "center" }}>
+                    {formStatus === "sent" ? (
+                      <p className="text-sm text-[#d4564e] font-medium" style={{ fontFamily: "'Newsreader', serif" }}>
+                        Wiadomość wysłana — odezwę się wkrótce!
+                      </p>
+                    ) : formStatus === "error" ? (
+                      <p className="text-sm text-[#d4564e]">
+                        Coś poszło nie tak. Napisz bezpośrednio na email.
+                      </p>
+                    ) : (
+                      <button
+                        type="submit"
+                        disabled={formStatus === "sending"}
+                        className="bg-[#1e293b] text-white text-sm font-medium px-8 hover:bg-[#d4564e] transition-colors duration-300 w-full lg:w-auto disabled:opacity-50"
+                        style={{ height: "32px" }}
+                      >
+                        {formStatus === "sending" ? "Wysyłanie..." : "Wyślij wiadomość"}
+                      </button>
+                    )}
+                  </div>
                 </form>
               </div>
             </div>
@@ -1073,7 +1090,7 @@ export default function Design3() {
                 className="text-xl font-medium tracking-tight text-white"
                 style={{ fontFamily: "'Newsreader', serif" }}
               >
-                matma<span className="text-[#d4564e]">.</span>
+                amatysek<span className="text-[#d4564e]">.</span>
               </span>
               <p className="text-sm text-white/30 mt-4 max-w-xs leading-relaxed">
                 Korepetycje z matematyki. Indywidualne podejście, sprawdzone metody, realne efekty.
