@@ -166,6 +166,57 @@ const stats = [
   { value: "1:1", label: "indywidualne podejście" },
 ];
 
+const marginFormulas = [
+  { text: "a\u00B2 + b\u00B2 = c\u00B2", top: "12%", right: "-2%" },
+  { text: "\u222Bf(x)dx", top: "28%", right: "-4%" },
+  { text: "lim x\u2192\u221E", top: "44%", right: "-1%" },
+  { text: "\u0394 = b\u00B2 \u2212 4ac", top: "60%", right: "-3%" },
+  { text: "\u2211 n=1..\u221E", top: "76%", right: "-2%" },
+  { text: "sin\u00B2\u03B1 + cos\u00B2\u03B1 = 1", top: "20%", left: "-3%" },
+  { text: "e^(i\u03C0) + 1 = 0", top: "50%", left: "-2%" },
+  { text: "P(A|B) = P(B|A)\u00B7P(A)/P(B)", top: "80%", left: "-4%" },
+];
+
+const PencilUnderline = () => (
+  <svg
+    viewBox="0 0 200 12"
+    preserveAspectRatio="none"
+    className="absolute -bottom-2 left-0 w-full h-3"
+  >
+    <path
+      d="M0,8 C20,4 40,10 60,6 C80,2 100,10 120,5 C140,0 160,9 180,4 C190,2 200,7 200,7"
+      fill="none"
+      stroke="#d4564e"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
+const SectionNumber = ({ num }: { num: string }) => (
+  <span
+    className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-[#1e293b]/30 text-sm font-medium text-[#1e293b] relative"
+    style={{
+      fontFamily: "'Newsreader', serif",
+      transform: "rotate(-2deg)",
+      boxShadow: "1px 2px 0 rgba(30,41,59,0.06)",
+    }}
+  >
+    {num}
+  </span>
+);
+
+const ruledLinesBg = `repeating-linear-gradient(
+  to bottom,
+  transparent,
+  transparent 31px,
+  #c8bfb4 31px,
+  #c8bfb4 32px
+)`;
+
+const tornEdgeClipPath =
+  "polygon(0% 4%, 3% 0%, 6% 3%, 9% 1%, 12% 4%, 15% 0%, 18% 3%, 21% 1%, 24% 4%, 27% 0%, 30% 3%, 33% 1%, 36% 4%, 39% 0%, 42% 3%, 45% 1%, 48% 4%, 51% 0%, 54% 3%, 57% 1%, 60% 4%, 63% 0%, 66% 3%, 69% 1%, 72% 4%, 75% 0%, 78% 3%, 81% 1%, 84% 4%, 87% 0%, 90% 3%, 93% 1%, 96% 4%, 100% 0%, 100% 100%, 0% 100%)";
+
 export default function Design3() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeExam, setActiveExam] = useState(0);
@@ -189,52 +240,84 @@ export default function Design3() {
   }, [menuOpen]);
 
   return (
-    <div className="min-h-screen bg-white text-[#1a1a1a] antialiased" style={{ scrollBehavior: "smooth" }}>
+    <div className="min-h-screen bg-[#faf6f1] text-[#1e293b] antialiased" style={{ scrollBehavior: "smooth" }}>
       <link
-        href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Source+Sans+3:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Instrument+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet"
       />
       <style>{`
-        * { font-family: 'Source Sans 3', sans-serif; }
-        h1, h2, h3, h4, h5, h6, .font-heading { font-family: 'Archivo', sans-serif; }
+        * { font-family: 'Instrument Sans', sans-serif; }
+        h1, h2, h3, h4, h5, h6, .font-serif-head { font-family: 'Newsreader', serif; }
         html { scroll-behavior: smooth; }
+        .ruled-lines {
+          background: ${ruledLinesBg};
+        }
+        .torn-top {
+          clip-path: ${tornEdgeClipPath};
+        }
+        @keyframes float-formula {
+          0%, 100% { opacity: 0.08; transform: translateY(0px); }
+          50% { opacity: 0.12; transform: translateY(-4px); }
+        }
+        .formula-float {
+          animation: float-formula 8s ease-in-out infinite;
+        }
       `}</style>
 
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "bg-white/95 backdrop-blur-sm" : "bg-transparent"
+          scrolled ? "bg-[#faf6f1]/95 backdrop-blur-sm shadow-[0_1px_0_#c8bfb4]" : "bg-transparent"
         }`}
       >
-        <div className="flex items-center justify-between px-6 lg:px-12 h-16 lg:h-20">
-          <a href="#" className="font-heading text-lg lg:text-xl font-900 tracking-tight" style={{ fontFamily: "Archivo, sans-serif" }}>
-            MATMA.
+        <div className="max-w-6xl mx-auto flex items-center justify-between px-6 lg:px-8 h-16 lg:h-20">
+          <a
+            href="#"
+            className="font-serif-head text-xl lg:text-2xl font-medium tracking-tight"
+            style={{ fontFamily: "'Newsreader', serif" }}
+          >
+            matma<span className="text-[#d4564e]">.</span>
           </a>
+          <div className="hidden lg:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-sm text-[#475569] hover:text-[#1e293b] transition-colors duration-300"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
           <button
             onClick={() => setMenuOpen(true)}
-            className="text-xs font-500 tracking-[0.25em] uppercase hover:text-[#e8a838] transition-colors duration-300"
-            style={{ fontFamily: "Archivo, sans-serif" }}
+            className="lg:hidden flex flex-col gap-1.5 p-2"
+            aria-label="Menu"
           >
-            Menu
+            <span className="block w-6 h-[1.5px] bg-[#1e293b]" />
+            <span className="block w-4 h-[1.5px] bg-[#1e293b]" />
+            <span className="block w-6 h-[1.5px] bg-[#1e293b]" />
           </button>
         </div>
       </nav>
 
       {menuOpen && (
-        <div className="fixed inset-0 z-[100] bg-[#1a3a2a] flex flex-col">
-          <div className="flex items-center justify-between px-6 lg:px-12 h-16 lg:h-20">
-            <span className="text-lg lg:text-xl font-900 tracking-tight text-white" style={{ fontFamily: "Archivo, sans-serif" }}>
-              MATMA.
+        <div className="fixed inset-0 z-[100] bg-[#faf6f1] flex flex-col">
+          <div className="flex items-center justify-between px-6 h-16">
+            <span
+              className="text-xl font-medium tracking-tight"
+              style={{ fontFamily: "'Newsreader', serif" }}
+            >
+              matma<span className="text-[#d4564e]">.</span>
             </span>
             <button
               onClick={() => setMenuOpen(false)}
-              className="text-xs font-500 tracking-[0.25em] uppercase text-white/60 hover:text-[#e8a838] transition-colors duration-300"
-              style={{ fontFamily: "Archivo, sans-serif" }}
+              className="text-sm text-[#475569] hover:text-[#1e293b] transition-colors p-2"
             >
               Zamknij
             </button>
           </div>
-          <div className="flex-1 flex flex-col justify-center px-6 lg:px-12">
-            <nav className="space-y-2">
+          <div className="flex-1 flex flex-col justify-center px-6">
+            <nav className="space-y-1">
               {navLinks.map((link, i) => (
                 <a
                   key={link.href}
@@ -242,13 +325,16 @@ export default function Design3() {
                   onClick={() => setMenuOpen(false)}
                   className="block group"
                 >
-                  <div className="flex items-baseline gap-6 py-3 lg:py-4 border-b border-white/10">
-                    <span className="text-xs text-white/30 font-500 tabular-nums" style={{ fontFamily: "Archivo, sans-serif" }}>
+                  <div className="flex items-baseline gap-4 py-4 border-b border-[#1e293b]/10">
+                    <span
+                      className="text-xs text-[#475569]/40 tabular-nums"
+                      style={{ fontFamily: "'Newsreader', serif" }}
+                    >
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span
-                      className="text-3xl sm:text-4xl lg:text-6xl font-800 text-white group-hover:text-[#e8a838] transition-colors duration-300 tracking-tight"
-                      style={{ fontFamily: "Archivo, sans-serif" }}
+                      className="text-3xl sm:text-4xl font-medium text-[#1e293b] group-hover:text-[#d4564e] transition-colors duration-300"
+                      style={{ fontFamily: "'Newsreader', serif" }}
                     >
                       {link.label}
                     </span>
@@ -257,307 +343,388 @@ export default function Design3() {
               ))}
             </nav>
           </div>
-          <div className="px-6 lg:px-12 pb-8 flex items-center gap-8 text-xs text-white/30">
-            <a href="mailto:olamatysek@gmail.com" className="hover:text-[#e8a838] transition-colors">
-              olamatysek@gmail.com
-            </a>
-            <span>+48 123 456 789</span>
+          <div className="px-6 pb-8 text-xs text-[#475569]/60">
+            olamatysek@gmail.com
           </div>
         </div>
       )}
 
-      <section className="min-h-screen flex flex-col lg:flex-row">
-        <div className="flex-1 bg-white flex flex-col justify-center px-6 lg:px-16 xl:px-24 py-32 lg:py-0">
-          <div className="max-w-xl">
-            <p
-              className="text-[10px] lg:text-xs font-600 tracking-[0.3em] uppercase text-[#1a3a2a]/40 mb-8"
-              style={{ fontFamily: "Archivo, sans-serif" }}
-            >
-              Korepetycje z matematyki
-            </p>
-            <h1
-              className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-900 tracking-tighter leading-[0.9]"
-              style={{ fontFamily: "Archivo, sans-serif" }}
-            >
-              Matematyka
-              <br />
-              bez
-              <br />
-              <span className="text-[#e8a838]">stresu.</span>
-            </h1>
-            <div className="w-16 h-[2px] bg-[#1a3a2a] mt-10 mb-8" />
-            <p className="text-base lg:text-lg font-300 text-[#1a3a2a]/60 leading-relaxed max-w-md">
-              Indywidualne korepetycje dla uczniów szkół podstawowych i licealistów. Online i stacjonarnie.
-            </p>
-            <a
-              href="#kontakt"
-              className="inline-block mt-10 bg-[#1a3a2a] text-white text-xs font-600 tracking-[0.2em] uppercase px-10 py-4 hover:bg-[#e8a838] transition-colors duration-300"
-              style={{ fontFamily: "Archivo, sans-serif" }}
-            >
-              Umów lekcję
-            </a>
-          </div>
-        </div>
-        <div className="flex-1 bg-[#1a3a2a] flex items-center justify-center px-6 lg:px-16 py-24 lg:py-0 relative overflow-hidden">
-          <div className="text-white/[0.06] select-none pointer-events-none absolute inset-0 flex items-center justify-center">
-            <div className="text-[20rem] sm:text-[28rem] lg:text-[24rem] xl:text-[30rem] font-900 leading-none tracking-tighter" style={{ fontFamily: "Archivo, sans-serif" }}>
-              {"\u03C0"}
-            </div>
-          </div>
-          <div className="relative z-10 text-white/[0.08] space-y-4 text-right w-full max-w-md">
-            <p className="text-4xl lg:text-5xl xl:text-6xl font-300 leading-tight" style={{ fontFamily: "Archivo, sans-serif" }}>
-              {"\u222B"} f(x) dx
-            </p>
-            <p className="text-3xl lg:text-4xl font-300" style={{ fontFamily: "Archivo, sans-serif" }}>
-              a{"\u00B2"} + b{"\u00B2"} = c{"\u00B2"}
-            </p>
-            <p className="text-2xl lg:text-3xl font-300" style={{ fontFamily: "Archivo, sans-serif" }}>
-              {"\u0394"} = b{"\u00B2"} {"\u2212"} 4ac
-            </p>
-            <p className="text-xl lg:text-2xl font-300" style={{ fontFamily: "Archivo, sans-serif" }}>
-              lim x{"\u2192"}{"\u221E"}
-            </p>
-            <p className="text-lg font-300" style={{ fontFamily: "Archivo, sans-serif" }}>
-              {"\u2211"} n=1...{"\u221E"}
-            </p>
-          </div>
-          <div className="absolute bottom-8 left-6 lg:left-16 flex items-center gap-8">
-            {stats.map((s) => (
-              <div key={s.value} className="text-white/60">
-                <span className="block text-2xl lg:text-3xl font-800 text-[#e8a838]" style={{ fontFamily: "Archivo, sans-serif" }}>
-                  {s.value}
-                </span>
-                <span className="block text-[10px] font-500 tracking-[0.15em] uppercase text-white/40">
-                  {s.label}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        <div
+          className="absolute inset-0 ruled-lines opacity-40"
+          style={{ backgroundPositionY: "8px" }}
+        />
+        <div className="absolute left-[4%] top-0 bottom-0 w-[1px] bg-[#d4564e]/15 hidden lg:block" />
+        <div className="absolute left-[5.5%] top-0 bottom-0 w-[1px] bg-[#d4564e]/10 hidden lg:block" />
 
-      <section id="o-mnie" className="flex flex-col lg:flex-row">
-        <div className="flex-1 bg-[#1a3a2a] px-6 lg:px-16 xl:px-24 py-20 lg:py-32">
-          <div className="max-w-xl ml-auto">
-            <p
-              className="text-[10px] font-600 tracking-[0.3em] uppercase text-white/30 mb-12"
-              style={{ fontFamily: "Archivo, sans-serif" }}
-            >
-              O mnie
-            </p>
-            <div className="w-full max-w-sm mb-10 overflow-hidden">
-              <img
-                src="/ola.jpg"
-                alt="Ola — korepetytorka matematyki"
-                className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700"
-              />
-            </div>
-            <div className="flex items-center gap-6 mb-10">
-              {stats.map((s) => (
-                <div key={s.value} className="border-l-2 border-[#e8a838] pl-4">
-                  <span className="block text-xl font-800 text-white" style={{ fontFamily: "Archivo, sans-serif" }}>
-                    {s.value}
-                  </span>
-                  <span className="block text-[10px] font-500 tracking-[0.15em] uppercase text-white/40">
-                    {s.label}
-                  </span>
-                </div>
-              ))}
-            </div>
-            <p className="text-xs font-500 tracking-[0.15em] uppercase text-[#e8a838]/80 mb-4">
-              Matplaneta
-            </p>
-            <p className="text-2xl lg:text-3xl font-300 italic text-white/70 leading-snug">
-              {"\u201E"}Wierzę, że każdy uczeń może polubić matematykę — wystarczy odpowiedni przewodnik i cierpliwość.{"\u201D"}
-            </p>
-          </div>
-        </div>
-        <div className="flex-1 bg-white px-6 lg:px-16 xl:px-24 py-20 lg:py-32">
-          <div className="max-w-xl">
-            <h2
-              className="text-4xl lg:text-5xl font-900 tracking-tighter leading-[0.95] mb-12"
-              style={{ fontFamily: "Archivo, sans-serif" }}
-            >
-              Ola
-              <span className="text-[#e8a838]">.</span>
-            </h2>
-            <div className="space-y-6">
-              {bioParas.map((para, i) => (
-                <p key={i} className="text-base font-300 text-[#1a3a2a]/70 leading-relaxed">
-                  {para}
-                </p>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+        {marginFormulas.slice(0, 5).map((f, i) => (
+          <span
+            key={i}
+            className="absolute hidden xl:block text-[#475569]/[0.07] text-sm select-none pointer-events-none formula-float"
+            style={{
+              fontFamily: "'Newsreader', serif",
+              fontStyle: "italic",
+              top: f.top,
+              right: f.right ? `calc(2% + ${i * 10}px)` : undefined,
+              left: f.left ? `calc(2% + ${i * 10}px)` : undefined,
+              animationDelay: `${i * 1.6}s`,
+            }}
+          >
+            {f.text}
+          </span>
+        ))}
 
-      <section id="egzaminy" className="flex flex-col lg:flex-row">
-        <div className="flex-1 bg-white px-6 lg:px-16 xl:px-24 py-20 lg:py-32">
-          <div className="max-w-xl ml-auto">
-            <p
-              className="text-[10px] font-600 tracking-[0.3em] uppercase text-[#1a3a2a]/30 mb-12"
-              style={{ fontFamily: "Archivo, sans-serif" }}
-            >
-              Egzaminy
-            </p>
-            <h2
-              className="text-4xl lg:text-5xl font-900 tracking-tighter leading-[0.95] mb-16"
-              style={{ fontFamily: "Archivo, sans-serif" }}
-            >
-              Do czego
-              <br />
-              przygotowuję
-              <span className="text-[#e8a838]">.</span>
-            </h2>
-            <div className="space-y-0">
-              {exams.map((exam, i) => (
-                <button
-                  key={exam.title}
-                  onClick={() => setActiveExam(i)}
-                  className={`w-full text-left py-6 border-t border-[#1a3a2a]/10 transition-colors duration-300 group ${
-                    activeExam === i ? "bg-transparent" : ""
-                  }`}
+        <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 w-full pt-32 pb-20 lg:pt-0 lg:pb-0">
+          <div className="lg:flex lg:items-center lg:gap-16">
+            <div className="lg:flex-1 lg:max-w-2xl">
+              <p className="text-[10px] font-semibold tracking-[0.3em] uppercase text-[#475569]/50 mb-8">
+                Korepetycje z matematyki
+              </p>
+              <h1
+                className="text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] font-medium leading-[1.05] tracking-tight mb-8"
+                style={{ fontFamily: "'Newsreader', serif" }}
+              >
+                Matematyka{" "}
+                <span className="relative inline-block">
+                  zapisana
+                  <PencilUnderline />
+                </span>
+                <br />
+                zrozumiałym
+                <br />
+                <span className="italic text-[#d4564e]">językiem.</span>
+              </h1>
+              <p className="text-base lg:text-lg text-[#475569] leading-relaxed max-w-lg mb-10">
+                Indywidualne korepetycje dla uczniów szkół podstawowych i licealistów.
+                Online i stacjonarnie.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a
+                  href="#kontakt"
+                  className="inline-flex items-center justify-center bg-[#1e293b] text-white text-sm font-medium px-8 py-3.5 hover:bg-[#d4564e] transition-colors duration-300"
                 >
-                  <div className="flex items-baseline justify-between gap-4">
+                  Umów lekcję
+                </a>
+                <a
+                  href="#o-mnie"
+                  className="inline-flex items-center justify-center border border-[#1e293b]/20 text-sm font-medium px-8 py-3.5 text-[#1e293b] hover:border-[#1e293b]/40 transition-colors duration-300"
+                >
+                  Poznaj mnie
+                </a>
+              </div>
+              <div className="flex items-center gap-8 mt-14">
+                {stats.map((s) => (
+                  <div key={s.value}>
                     <span
-                      className={`text-lg lg:text-xl font-700 tracking-tight transition-colors duration-300 ${
-                        activeExam === i ? "text-[#1a3a2a]" : "text-[#1a3a2a]/40 group-hover:text-[#1a3a2a]/70"
+                      className="block text-2xl lg:text-3xl font-medium text-[#1e293b]"
+                      style={{ fontFamily: "'Newsreader', serif" }}
+                    >
+                      {s.value}
+                    </span>
+                    <span className="block text-[10px] font-semibold tracking-[0.15em] uppercase text-[#475569]/50 mt-1">
+                      {s.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="hidden lg:flex flex-1 items-center justify-center">
+              <div
+                className="text-[#1e293b]/[0.04] leading-relaxed text-right space-y-3 select-none"
+                style={{ fontFamily: "'Newsreader', serif", fontStyle: "italic" }}
+              >
+                <p className="text-5xl">a{"\u00B2"} + b{"\u00B2"} = c{"\u00B2"}</p>
+                <p className="text-4xl">{"\u222B"}f(x)dx</p>
+                <p className="text-3xl">{"\u0394"} = b{"\u00B2"} {"\u2212"} 4ac</p>
+                <p className="text-2xl">lim x{"\u2192"}{"\u221E"}</p>
+                <p className="text-xl">{"\u2211"} n=1...{"\u221E"}</p>
+                <p className="text-lg">sin{"\u00B2"}{"\u03B1"} + cos{"\u00B2"}{"\u03B1"} = 1</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="o-mnie" className="relative bg-[#faf6f1] py-24 lg:py-32">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <div className="flex items-center gap-4 mb-16">
+            <SectionNumber num="01" />
+            <span className="text-[10px] font-semibold tracking-[0.3em] uppercase text-[#475569]/50">
+              O mnie
+            </span>
+          </div>
+
+          <div className="lg:flex lg:gap-16 xl:gap-24">
+            <div className="lg:w-[360px] xl:w-[400px] shrink-0 mb-12 lg:mb-0">
+              <div
+                className="relative inline-block"
+                style={{
+                  transform: "rotate(-2deg)",
+                }}
+              >
+                <div className="bg-white p-3 pb-12 shadow-[4px_6px_20px_rgba(0,0,0,0.1)]">
+                  <img
+                    src="/ola.jpg"
+                    alt="Ola — korepetytorka matematyki"
+                    className="w-full h-auto"
+                  />
+                  <p
+                    className="absolute bottom-4 left-0 right-0 text-center text-sm text-[#475569]/70 italic"
+                    style={{ fontFamily: "'Newsreader', serif" }}
+                  >
+                    Ola Matysek
+                  </p>
+                </div>
+                <div
+                  className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-[#d4564e] shadow-sm"
+                  style={{ zIndex: 10 }}
+                />
+              </div>
+
+              <div className="flex items-center gap-6 mt-10">
+                {stats.map((s) => (
+                  <div key={s.value} className="border-l-2 border-[#d4564e]/40 pl-3">
+                    <span
+                      className="block text-xl font-medium text-[#1e293b]"
+                      style={{ fontFamily: "'Newsreader', serif" }}
+                    >
+                      {s.value}
+                    </span>
+                    <span className="block text-[10px] font-semibold tracking-[0.12em] uppercase text-[#475569]/50">
+                      {s.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex-1">
+              <h2
+                className="text-4xl lg:text-5xl font-medium tracking-tight leading-tight mb-10"
+                style={{ fontFamily: "'Newsreader', serif" }}
+              >
+                Poznaj swoją
+                <br />
+                <span className="relative inline-block">
+                  korepetytorkę
+                  <PencilUnderline />
+                </span>
+              </h2>
+              <div className="space-y-5">
+                {bioParas.map((para, i) => (
+                  <p key={i} className="text-base text-[#475569] leading-relaxed">
+                    {para}
+                  </p>
+                ))}
+              </div>
+              <blockquote className="mt-10 pl-6 border-l-2 border-[#d4564e]/40">
+                <p
+                  className="text-lg lg:text-xl italic text-[#1e293b]/80 leading-relaxed"
+                  style={{ fontFamily: "'Newsreader', serif" }}
+                >
+                  {"\u201E"}Wierzę, że każdy uczeń może polubić matematykę — wystarczy odpowiedni przewodnik i cierpliwość.{"\u201D"}
+                </p>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="egzaminy" className="relative bg-[#1e293b] py-24 lg:py-32 overflow-hidden">
+        <span
+          className="absolute top-8 right-8 text-white/[0.03] text-sm select-none pointer-events-none hidden lg:block"
+          style={{ fontFamily: "'Newsreader', serif", fontStyle: "italic" }}
+        >
+          {"\u222B"}f(x)dx = F(x) + C
+        </span>
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <div className="flex items-center gap-4 mb-16">
+            <span
+              className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-white/20 text-sm font-medium text-white/60 relative"
+              style={{
+                fontFamily: "'Newsreader', serif",
+                transform: "rotate(-2deg)",
+              }}
+            >
+              02
+            </span>
+            <span className="text-[10px] font-semibold tracking-[0.3em] uppercase text-white/30">
+              Egzaminy
+            </span>
+          </div>
+
+          <div className="lg:flex lg:gap-12 xl:gap-16">
+            <div className="lg:w-[280px] shrink-0 mb-10 lg:mb-0">
+              <h2
+                className="text-4xl lg:text-5xl font-medium tracking-tight text-white leading-tight mb-8"
+                style={{ fontFamily: "'Newsreader', serif" }}
+              >
+                Do czego
+                <br />
+                <span className="italic text-[#d4564e]">przygotowuję</span>
+              </h2>
+              <div className="space-y-1">
+                {exams.map((exam, i) => (
+                  <button
+                    key={exam.title}
+                    onClick={() => setActiveExam(i)}
+                    className={`w-full text-left py-4 border-b border-white/10 transition-all duration-300 group ${
+                      activeExam === i ? "" : ""
+                    }`}
+                  >
+                    <span
+                      className={`block text-base font-medium transition-colors duration-300 ${
+                        activeExam === i ? "text-white" : "text-white/30 group-hover:text-white/60"
                       }`}
-                      style={{ fontFamily: "Archivo, sans-serif" }}
+                      style={{ fontFamily: "'Newsreader', serif" }}
                     >
                       {exam.title}
                     </span>
                     <span
-                      className={`text-xs font-500 transition-colors duration-300 ${
-                        activeExam === i ? "text-[#e8a838]" : "text-[#1a3a2a]/20"
+                      className={`block text-xs mt-1 transition-colors duration-300 ${
+                        activeExam === i ? "text-white/50" : "text-white/15"
                       }`}
                     >
-                      {activeExam === i ? "\u2190" : "\u2192"}
+                      {exam.subtitle}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex-1">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                {[
+                  { label: "Termin", value: exams[activeExam].date, rot: "0.5deg" },
+                  { label: "Czas", value: exams[activeExam].duration, rot: "-0.5deg" },
+                  { label: "Punkty", value: exams[activeExam].points, rot: "0.3deg" },
+                ].map((item) => (
+                  <div
+                    key={item.label}
+                    className="bg-white pt-5 pb-4 px-5 torn-top relative"
+                    style={{
+                      transform: `rotate(${item.rot})`,
+                    }}
+                  >
+                    <div className="absolute top-2 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[#d4564e]" />
+                    <span className="block text-[10px] font-semibold tracking-[0.15em] uppercase text-[#475569]/50 mb-1">
+                      {item.label}
+                    </span>
+                    <span
+                      className="block text-base font-medium text-[#1e293b]"
+                      style={{ fontFamily: "'Newsreader', serif" }}
+                    >
+                      {item.value}
                     </span>
                   </div>
-                  <p
-                    className={`text-xs font-400 mt-1 transition-colors duration-300 ${
-                      activeExam === i ? "text-[#1a3a2a]/50" : "text-[#1a3a2a]/20"
-                    }`}
-                  >
-                    {exam.subtitle}
-                  </p>
-                </button>
-              ))}
-              <div className="border-t border-[#1a3a2a]/10" />
-            </div>
-          </div>
-        </div>
-        <div className="flex-1 bg-[#1a3a2a] px-6 lg:px-16 xl:px-24 py-20 lg:py-32">
-          <div className="max-w-xl">
-            <div className="mb-8">
-              <h3
-                className="text-3xl lg:text-4xl font-800 text-white tracking-tight leading-tight mb-2"
-                style={{ fontFamily: "Archivo, sans-serif" }}
+                ))}
+              </div>
+
+              <div
+                className="bg-white pt-6 pb-6 px-6 torn-top relative"
+                style={{ transform: "rotate(0.3deg)" }}
               >
-                {exams[activeExam].title}
-              </h3>
-              <p className="text-sm font-400 text-white/40">
-                {exams[activeExam].subtitle}
-              </p>
-            </div>
-            <div className="flex gap-6 mb-10">
-              <div className="border-l-2 border-[#e8a838] pl-4">
-                <span className="block text-[10px] font-500 tracking-[0.15em] uppercase text-white/30">Termin</span>
-                <span className="block text-sm font-500 text-white/80">{exams[activeExam].date}</span>
-              </div>
-              <div className="border-l-2 border-[#e8a838] pl-4">
-                <span className="block text-[10px] font-500 tracking-[0.15em] uppercase text-white/30">Czas</span>
-                <span className="block text-sm font-500 text-white/80">{exams[activeExam].duration}</span>
-              </div>
-              <div className="border-l-2 border-[#e8a838] pl-4">
-                <span className="block text-[10px] font-500 tracking-[0.15em] uppercase text-white/30">Punkty</span>
-                <span className="block text-sm font-500 text-white/80">{exams[activeExam].points}</span>
-              </div>
-            </div>
-            <div className="w-12 h-[2px] bg-[#e8a838] mb-8" />
-            <p className="text-base font-300 text-white/60 leading-relaxed mb-10">
-              {exams[activeExam].description}
-            </p>
-            <p
-              className="text-[10px] font-600 tracking-[0.3em] uppercase text-white/30 mb-4"
-              style={{ fontFamily: "Archivo, sans-serif" }}
-            >
-              Zakres materiału
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
-              {exams[activeExam].topics.map((topic) => (
-                <div key={topic} className="flex items-center gap-3 py-1">
-                  <span className="w-1.5 h-[2px] bg-[#e8a838] shrink-0" />
-                  <span className="text-sm font-400 text-white/60">{topic}</span>
+                <div className="absolute top-2 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[#d4564e]" />
+                <h3
+                  className="text-2xl font-medium text-[#1e293b] tracking-tight mb-2"
+                  style={{ fontFamily: "'Newsreader', serif" }}
+                >
+                  {exams[activeExam].title}
+                </h3>
+                <p className="text-sm text-[#475569] leading-relaxed mb-6">
+                  {exams[activeExam].description}
+                </p>
+                <p className="text-[10px] font-semibold tracking-[0.2em] uppercase text-[#475569]/50 mb-3">
+                  Zakres materiału
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
+                  {exams[activeExam].topics.map((topic) => (
+                    <div key={topic} className="flex items-start gap-2 py-0.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#d4564e]/40 mt-1.5 shrink-0" />
+                      <span className="text-sm text-[#475569]">{topic}</span>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="oferta" className="flex flex-col lg:flex-row">
-        <div className="flex-1 bg-[#1a3a2a] px-6 lg:px-16 xl:px-24 py-20 lg:py-32">
-          <div className="max-w-xl ml-auto">
-            <p
-              className="text-[10px] font-600 tracking-[0.3em] uppercase text-white/30 mb-12"
-              style={{ fontFamily: "Archivo, sans-serif" }}
-            >
+      <section id="oferta" className="relative bg-[#faf6f1] py-24 lg:py-32">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <div className="flex items-center gap-4 mb-16">
+            <SectionNumber num="03" />
+            <span className="text-[10px] font-semibold tracking-[0.3em] uppercase text-[#475569]/50">
               Oferta
-            </p>
-            <h2
-              className="text-4xl lg:text-5xl font-900 tracking-tighter text-white leading-[0.95] mb-16"
-              style={{ fontFamily: "Archivo, sans-serif" }}
-            >
-              Formy
-              <br />
+            </span>
+          </div>
+
+          <h2
+            className="text-4xl lg:text-5xl font-medium tracking-tight leading-tight mb-16"
+            style={{ fontFamily: "'Newsreader', serif" }}
+          >
+            Formy{" "}
+            <span className="relative inline-block">
               zajęć
-              <span className="text-[#e8a838]">.</span>
-            </h2>
-            <div className="mb-16">
-              <div className="flex items-baseline gap-4 mb-8">
-                <span className="text-6xl lg:text-7xl font-900 text-[#e8a838]" style={{ fontFamily: "Archivo, sans-serif" }}>
-                  01
-                </span>
-                <h3
-                  className="text-2xl font-700 text-white tracking-tight"
-                  style={{ fontFamily: "Archivo, sans-serif" }}
-                >
-                  Lekcje Online
-                </h3>
-              </div>
-              <div className="space-y-3 pl-2">
+              <PencilUnderline />
+            </span>
+          </h2>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+            <div
+              className="bg-white p-8 lg:p-10 relative torn-top pt-12"
+              style={{ boxShadow: "2px 4px 16px rgba(0,0,0,0.06)" }}
+            >
+              <div className="absolute top-3 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[#d4564e]" />
+              <h3
+                className="text-2xl font-medium tracking-tight mb-2"
+                style={{ fontFamily: "'Newsreader', serif" }}
+              >
+                Lekcje Online
+              </h3>
+              <p className="text-sm text-[#475569]/60 mb-8">
+                Ucz się z dowolnego miejsca
+              </p>
+              <div className="space-y-4">
                 {onlineFeatures.map((f) => (
-                  <div key={f} className="flex items-start gap-4">
-                    <span className="w-4 h-[1px] bg-[#e8a838] mt-[10px] shrink-0" />
-                    <span className="text-sm font-300 text-white/60 leading-relaxed">{f}</span>
+                  <div key={f} className="flex items-start gap-3">
+                    <span
+                      className="text-[#d4564e] text-lg leading-none mt-0.5 shrink-0"
+                      style={{ fontFamily: "'Newsreader', serif" }}
+                    >
+                      {"\u2713"}
+                    </span>
+                    <span className="text-sm text-[#475569] leading-relaxed">{f}</span>
                   </div>
                 ))}
               </div>
             </div>
-          </div>
-        </div>
-        <div className="flex-1 bg-white px-6 lg:px-16 xl:px-24 py-20 lg:py-32">
-          <div className="max-w-xl flex flex-col justify-end h-full">
-            <div>
-              <div className="flex items-baseline gap-4 mb-8">
-                <span className="text-6xl lg:text-7xl font-900 text-[#e8a838]" style={{ fontFamily: "Archivo, sans-serif" }}>
-                  02
-                </span>
-                <h3
-                  className="text-2xl font-700 text-[#1a3a2a] tracking-tight"
-                  style={{ fontFamily: "Archivo, sans-serif" }}
-                >
-                  Lekcje Stacjonarne
-                </h3>
-              </div>
-              <div className="space-y-3 pl-2">
+
+            <div
+              className="bg-white p-8 lg:p-10 relative torn-top pt-12"
+              style={{ boxShadow: "2px 4px 16px rgba(0,0,0,0.06)" }}
+            >
+              <div className="absolute top-3 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[#d4564e]" />
+              <h3
+                className="text-2xl font-medium tracking-tight mb-2"
+                style={{ fontFamily: "'Newsreader', serif" }}
+              >
+                Lekcje Stacjonarne
+              </h3>
+              <p className="text-sm text-[#475569]/60 mb-8">
+                Klasyczna nauka twarzą w twarz
+              </p>
+              <div className="space-y-4">
                 {stationaryFeatures.map((f) => (
-                  <div key={f} className="flex items-start gap-4">
-                    <span className="w-4 h-[1px] bg-[#1a3a2a]/30 mt-[10px] shrink-0" />
-                    <span className="text-sm font-300 text-[#1a3a2a]/60 leading-relaxed">{f}</span>
+                  <div key={f} className="flex items-start gap-3">
+                    <span
+                      className="text-[#d4564e] text-lg leading-none mt-0.5 shrink-0"
+                      style={{ fontFamily: "'Newsreader', serif" }}
+                    >
+                      {"\u2713"}
+                    </span>
+                    <span className="text-sm text-[#475569] leading-relaxed">{f}</span>
                   </div>
                 ))}
               </div>
@@ -566,51 +733,68 @@ export default function Design3() {
         </div>
       </section>
 
-      <section id="jak-wyglada-lekcja" className="flex flex-col lg:flex-row">
-        <div className="flex-1 bg-white px-6 lg:px-16 xl:px-24 py-20 lg:py-32">
-          <div className="max-w-xl ml-auto">
-            <p
-              className="text-[10px] font-600 tracking-[0.3em] uppercase text-[#1a3a2a]/30 mb-12"
-              style={{ fontFamily: "Archivo, sans-serif" }}
-            >
+      <section id="jak-wyglada-lekcja" className="relative bg-[#faf6f1] py-24 lg:py-32">
+        <div
+          className="absolute inset-0 ruled-lines opacity-20"
+          style={{ backgroundPositionY: "8px" }}
+        />
+        <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
+          <div className="flex items-center gap-4 mb-16">
+            <SectionNumber num="04" />
+            <span className="text-[10px] font-semibold tracking-[0.3em] uppercase text-[#475569]/50">
               Jak wygląda lekcja
-            </p>
-            <h2
-              className="text-4xl lg:text-5xl font-900 tracking-tighter leading-[0.95] mb-8"
-              style={{ fontFamily: "Archivo, sans-serif" }}
-            >
-              Cztery kroki
-              <br />
-              do sukcesu
-              <span className="text-[#e8a838]">.</span>
-            </h2>
-            <p className="text-base font-300 text-[#1a3a2a]/50 leading-relaxed max-w-sm">
-              Każda współpraca zaczyna się od poznania Twoich potrzeb i kończy na wymiernych efektach.
-            </p>
+            </span>
           </div>
-        </div>
-        <div className="flex-1 bg-[#1a3a2a] px-6 lg:px-16 xl:px-24 py-20 lg:py-32 relative">
-          <div className="max-w-xl">
-            <div className="absolute left-6 lg:left-16 xl:left-24 top-20 lg:top-32 bottom-20 lg:bottom-32 w-[1px] bg-white/10" />
-            <div className="space-y-16">
+
+          <h2
+            className="text-4xl lg:text-5xl font-medium tracking-tight leading-tight mb-6"
+            style={{ fontFamily: "'Newsreader', serif" }}
+          >
+            Cztery kroki do{" "}
+            <span className="relative inline-block">
+              sukcesu
+              <PencilUnderline />
+            </span>
+          </h2>
+          <p className="text-base text-[#475569] leading-relaxed max-w-lg mb-16">
+            Każda współpraca zaczyna się od poznania Twoich potrzeb i kończy na wymiernych efektach.
+          </p>
+
+          <div className="relative">
+            <div className="absolute left-5 top-5 bottom-5 w-0 border-l-2 border-dashed border-[#1e293b]/15 hidden lg:block" />
+
+            <div className="space-y-12 lg:space-y-16">
               {steps.map((step, i) => (
-                <div key={step.number} className="relative pl-12 lg:pl-16">
-                  <div className="absolute left-0 top-0 w-6 h-6 bg-[#e8a838] flex items-center justify-center -ml-[12px] lg:-ml-[12px]">
-                    <span className="text-[10px] font-700 text-[#1a3a2a]" style={{ fontFamily: "Archivo, sans-serif" }}>
+                <div key={step.number} className="lg:flex lg:items-start lg:gap-10">
+                  <div className="relative shrink-0 mb-4 lg:mb-0">
+                    <span
+                      className="inline-flex items-center justify-center w-10 h-10 rounded-full border-2 border-dashed border-[#1e293b]/20 bg-[#faf6f1] text-sm font-medium text-[#1e293b] relative z-10"
+                      style={{
+                        fontFamily: "'Newsreader', serif",
+                        transform: `rotate(${i % 2 === 0 ? "-" : ""}3deg)`,
+                      }}
+                    >
                       {step.number}
                     </span>
+                    {i < steps.length - 1 && (
+                      <div className="absolute left-5 top-10 h-12 w-0 border-l-2 border-dashed border-[#1e293b]/10 lg:hidden" />
+                    )}
                   </div>
-                  <h3
-                    className="text-xl lg:text-2xl font-700 text-white tracking-tight mb-3"
-                    style={{ fontFamily: "Archivo, sans-serif" }}
-                  >
-                    {step.title}
-                  </h3>
-                  <p className="text-sm font-300 text-white/50 leading-relaxed">
-                    {step.description}
-                  </p>
+                  <div className="flex-1">
+                    <h3
+                      className="text-xl lg:text-2xl font-medium tracking-tight mb-2"
+                      style={{ fontFamily: "'Newsreader', serif" }}
+                    >
+                      {step.title}
+                    </h3>
+                    <p className="text-sm text-[#475569] leading-relaxed max-w-md">
+                      {step.description}
+                    </p>
+                  </div>
                   {i < steps.length - 1 && (
-                    <div className="absolute left-[-1px] lg:left-[-1px] top-6 h-full w-[1px]" />
+                    <div className="hidden lg:block shrink-0 self-center text-[#1e293b]/15 text-2xl">
+                      {"\u2192"}
+                    </div>
                   )}
                 </div>
               ))}
@@ -619,53 +803,54 @@ export default function Design3() {
         </div>
       </section>
 
-      <section id="dla-kogo" className="flex flex-col lg:flex-row">
-        <div className="flex-1 bg-[#1a3a2a] px-6 lg:px-16 xl:px-24 py-20 lg:py-32">
-          <div className="max-w-xl ml-auto">
-            <p
-              className="text-[10px] font-600 tracking-[0.3em] uppercase text-white/30 mb-12"
-              style={{ fontFamily: "Archivo, sans-serif" }}
-            >
+      <section id="dla-kogo" className="relative bg-white py-24 lg:py-32">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <div className="flex items-center gap-4 mb-16">
+            <SectionNumber num="05" />
+            <span className="text-[10px] font-semibold tracking-[0.3em] uppercase text-[#475569]/50">
               Dla kogo
-            </p>
-            <h2
-              className="text-4xl lg:text-5xl font-900 tracking-tighter text-white leading-[0.95] mb-8"
-              style={{ fontFamily: "Archivo, sans-serif" }}
-            >
-              Pracuję z
-              <span className="text-[#e8a838]">.</span>
-            </h2>
-            <p className="text-base font-300 text-white/40 leading-relaxed max-w-sm">
-              Zajęcia dopasowuję do poziomu, celów i stylu nauki każdego ucznia.
-            </p>
+            </span>
           </div>
-        </div>
-        <div className="flex-1 bg-white px-6 lg:px-16 xl:px-24 py-20 lg:py-32">
-          <div className="max-w-xl">
-            <div className="space-y-0">
+
+          <div className="lg:flex lg:gap-16 xl:gap-24">
+            <div className="lg:w-[380px] shrink-0 mb-12 lg:mb-0">
+              <h2
+                className="text-4xl lg:text-5xl font-medium tracking-tight leading-tight mb-6"
+                style={{ fontFamily: "'Newsreader', serif" }}
+              >
+                Z kim{" "}
+                <span className="relative inline-block">
+                  pracuję
+                  <PencilUnderline />
+                </span>
+              </h2>
+              <p className="text-base text-[#475569] leading-relaxed">
+                Zajęcia dopasowuję do poziomu, celów i stylu nauki każdego ucznia.
+              </p>
+            </div>
+
+            <div className="flex-1">
               {studentProfiles.map((profile, i) => (
                 <div
                   key={profile.label}
-                  className="py-6 border-b border-[#1a3a2a]/10 group"
+                  className="flex items-start gap-5 py-6 border-b border-[#1e293b]/10 group"
                 >
-                  <div className="flex items-baseline gap-6">
-                    <span
-                      className="text-xs font-600 text-[#1a3a2a]/20 tabular-nums"
-                      style={{ fontFamily: "Archivo, sans-serif" }}
+                  <span
+                    className="text-sm text-[#475569]/30 tabular-nums mt-0.5 shrink-0"
+                    style={{ fontFamily: "'Newsreader', serif" }}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div>
+                    <h3
+                      className="text-lg font-medium text-[#1e293b] group-hover:text-[#d4564e] transition-colors duration-300 tracking-tight"
+                      style={{ fontFamily: "'Newsreader', serif" }}
                     >
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <div>
-                      <h3
-                        className="text-lg font-700 text-[#1a3a2a] tracking-tight group-hover:text-[#e8a838] transition-colors duration-300"
-                        style={{ fontFamily: "Archivo, sans-serif" }}
-                      >
-                        {profile.label}
-                      </h3>
-                      <p className="text-sm font-300 text-[#1a3a2a]/40 mt-1">
-                        {profile.detail}
-                      </p>
-                    </div>
+                      {profile.label}
+                    </h3>
+                    <p className="text-sm text-[#475569]/60 mt-1">
+                      {profile.detail}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -674,239 +859,257 @@ export default function Design3() {
         </div>
       </section>
 
-      <section id="opinie" className="flex flex-col lg:flex-row">
-        <div className="flex-1 bg-white px-6 lg:px-16 xl:px-24 py-20 lg:py-32">
-          <div className="max-w-xl ml-auto">
-            <p
-              className="text-[10px] font-600 tracking-[0.3em] uppercase text-[#1a3a2a]/30 mb-12"
-              style={{ fontFamily: "Archivo, sans-serif" }}
-            >
+      <section id="opinie" className="relative bg-[#faf6f1] py-24 lg:py-32 overflow-hidden">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <div className="flex items-center gap-4 mb-16">
+            <SectionNumber num="06" />
+            <span className="text-[10px] font-semibold tracking-[0.3em] uppercase text-[#475569]/50">
               Opinie
-            </p>
-            <h2
-              className="text-4xl lg:text-5xl font-900 tracking-tighter leading-[0.95] mb-8"
-              style={{ fontFamily: "Archivo, sans-serif" }}
-            >
-              Co mówią
-              <br />
-              rodzice
-              <span className="text-[#e8a838]">.</span>
-            </h2>
-            <p className="text-base font-300 text-[#1a3a2a]/50 leading-relaxed max-w-sm">
-              Prawdziwe opinie rodziców, którzy zaufali mojej metodzie pracy.
-            </p>
+            </span>
           </div>
-        </div>
-        <div className="flex-1 bg-[#1a3a2a] px-6 lg:px-16 xl:px-24 py-20 lg:py-32">
-          <div className="max-w-xl space-y-16">
-            {testimonials.map((t) => (
-              <div key={t.name} className="relative">
-                <span
-                  className="text-8xl lg:text-9xl font-900 text-[#e8a838]/15 leading-none absolute -top-8 -left-2 select-none pointer-events-none"
-                  style={{ fontFamily: "Archivo, sans-serif" }}
+
+          <h2
+            className="text-4xl lg:text-5xl font-medium tracking-tight leading-tight mb-6"
+            style={{ fontFamily: "'Newsreader', serif" }}
+          >
+            Co mówią{" "}
+            <span className="relative inline-block">
+              rodzice
+              <PencilUnderline />
+            </span>
+          </h2>
+          <p className="text-base text-[#475569] leading-relaxed max-w-lg mb-16">
+            Prawdziwe opinie rodziców, którzy zaufali mojej metodzie pracy.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((t, i) => {
+              const rotations = [-1.5, 0.8, -0.6];
+              return (
+                <div
+                  key={t.name}
+                  className="relative bg-white p-6 lg:p-8"
+                  style={{
+                    transform: `rotate(${rotations[i]}deg)`,
+                    background: `${ruledLinesBg}, #ffffff`,
+                    backgroundPositionY: "12px",
+                    boxShadow: "2px 4px 16px rgba(0,0,0,0.06)",
+                  }}
                 >
-                  {"\u201E"}
-                </span>
-                <p className="text-lg lg:text-xl font-300 text-white/80 leading-relaxed relative z-10 mb-6">
-                  {t.quote}
-                </p>
-                <div className="flex items-center gap-3">
-                  <span className="w-8 h-[1px] bg-[#e8a838]" />
-                  <div>
-                    <p className="text-sm font-600 text-white/90">{t.name}</p>
-                    <p className="text-xs font-300 text-white/30">{t.context}</p>
+                  <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#d4564e] shadow-sm z-10" />
+                  <span
+                    className="block text-5xl text-[#d4564e]/20 leading-none mb-2 select-none"
+                    style={{ fontFamily: "'Newsreader', serif" }}
+                  >
+                    {"\u201E"}
+                  </span>
+                  <p
+                    className="text-sm text-[#1e293b]/80 leading-relaxed mb-6 relative z-10"
+                    style={{ fontFamily: "'Newsreader', serif", fontStyle: "italic" }}
+                  >
+                    {t.quote}
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <span className="w-6 h-[1px] bg-[#d4564e]/40" />
+                    <div>
+                      <p className="text-sm font-semibold text-[#1e293b]">{t.name}</p>
+                      <p className="text-xs text-[#475569]/50">{t.context}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section id="kontakt" className="flex flex-col lg:flex-row">
-        <div className="flex-1 bg-[#1a3a2a] px-6 lg:px-16 xl:px-24 py-20 lg:py-32">
-          <div className="max-w-xl ml-auto">
-            <p
-              className="text-[10px] font-600 tracking-[0.3em] uppercase text-white/30 mb-12"
-              style={{ fontFamily: "Archivo, sans-serif" }}
-            >
+      <section id="kontakt" className="relative bg-white py-24 lg:py-32">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <div className="flex items-center gap-4 mb-16">
+            <SectionNumber num="07" />
+            <span className="text-[10px] font-semibold tracking-[0.3em] uppercase text-[#475569]/50">
               Kontakt
-            </p>
-            <h2
-              className="text-4xl lg:text-5xl xl:text-6xl font-900 tracking-tighter text-white leading-[0.95] mb-12"
-              style={{ fontFamily: "Archivo, sans-serif" }}
-            >
-              Porozmawiajmy
-              <span className="text-[#e8a838]">.</span>
-            </h2>
-            <p className="text-base font-300 text-white/50 leading-relaxed mb-16 max-w-md">
-              Pierwsza konsultacja jest bezpłatna. Napisz lub zadzwoń — ustalimy, jak mogę pomóc.
-            </p>
-            <div className="space-y-8">
-              <div>
-                <p
-                  className="text-[10px] font-600 tracking-[0.3em] uppercase text-white/20 mb-2"
-                  style={{ fontFamily: "Archivo, sans-serif" }}
-                >
-                  Email
-                </p>
-                <a
-                  href="mailto:olamatysek@gmail.com"
-                  className="text-lg font-500 text-white hover:text-[#e8a838] transition-colors duration-300"
-                >
-                  olamatysek@gmail.com
-                </a>
+            </span>
+          </div>
+
+          <div className="lg:flex lg:gap-16 xl:gap-24">
+            <div className="lg:flex-1 mb-16 lg:mb-0">
+              <h2
+                className="text-4xl lg:text-5xl font-medium tracking-tight leading-tight mb-6"
+                style={{ fontFamily: "'Newsreader', serif" }}
+              >
+                <span className="relative inline-block">
+                  Porozmawiajmy
+                  <PencilUnderline />
+                </span>
+              </h2>
+              <p className="text-base text-[#475569] leading-relaxed mb-12 max-w-md">
+                Pierwsza konsultacja jest bezpłatna. Napisz lub zadzwoń — ustalimy, jak mogę pomóc.
+              </p>
+
+              <div className="space-y-8">
+                <div>
+                  <p className="text-[10px] font-semibold tracking-[0.2em] uppercase text-[#475569]/40 mb-2">
+                    Email
+                  </p>
+                  <a
+                    href="mailto:olamatysek@gmail.com"
+                    className="text-lg font-medium text-[#1e293b] hover:text-[#d4564e] transition-colors duration-300"
+                    style={{ fontFamily: "'Newsreader', serif" }}
+                  >
+                    olamatysek@gmail.com
+                  </a>
+                </div>
+                <div>
+                  <p className="text-[10px] font-semibold tracking-[0.2em] uppercase text-[#475569]/40 mb-2">
+                    Telefon
+                  </p>
+                  <a
+                    href="tel:+48123456789"
+                    className="text-lg font-medium text-[#1e293b] hover:text-[#d4564e] transition-colors duration-300"
+                    style={{ fontFamily: "'Newsreader', serif" }}
+                  >
+                    +48 123 456 789
+                  </a>
+                </div>
+                <div>
+                  <p className="text-[10px] font-semibold tracking-[0.2em] uppercase text-[#475569]/40 mb-2">
+                    Forma zajęć
+                  </p>
+                  <p
+                    className="text-lg font-medium text-[#1e293b]"
+                    style={{ fontFamily: "'Newsreader', serif" }}
+                  >
+                    Online / Stacjonarnie
+                  </p>
+                </div>
               </div>
-              <div>
-                <p
-                  className="text-[10px] font-600 tracking-[0.3em] uppercase text-white/20 mb-2"
-                  style={{ fontFamily: "Archivo, sans-serif" }}
+            </div>
+
+            <div className="lg:flex-1">
+              <div
+                className="relative p-8 lg:p-10"
+                style={{
+                  background: `${ruledLinesBg}, #faf6f1`,
+                  backgroundPositionY: "8px",
+                  boxShadow: "2px 4px 20px rgba(0,0,0,0.06)",
+                }}
+              >
+                <div className="absolute left-6 top-0 bottom-0 w-[1px] bg-[#d4564e]/15" />
+
+                <h3
+                  className="text-xl font-medium tracking-tight mb-8"
+                  style={{ fontFamily: "'Newsreader', serif" }}
                 >
-                  Telefon
-                </p>
-                <a
-                  href="tel:+48123456789"
-                  className="text-lg font-500 text-white hover:text-[#e8a838] transition-colors duration-300"
-                >
-                  +48 123 456 789
-                </a>
-              </div>
-              <div>
-                <p
-                  className="text-[10px] font-600 tracking-[0.3em] uppercase text-white/20 mb-2"
-                  style={{ fontFamily: "Archivo, sans-serif" }}
-                >
-                  Forma zajęć
-                </p>
-                <p className="text-lg font-500 text-white/80">
-                  Online / Stacjonarnie
-                </p>
+                  Wyślij wiadomość
+                </h3>
+                <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
+                  <div>
+                    <label
+                      className="block text-[10px] font-semibold tracking-[0.2em] uppercase text-[#475569]/50 mb-2"
+                    >
+                      Imię i nazwisko
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full bg-transparent border-b border-[#c8bfb4] py-3 text-sm text-[#1e293b] outline-none focus:border-[#d4564e] transition-colors duration-300 placeholder:text-[#475569]/30"
+                      placeholder="Jan Kowalski"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      className="block text-[10px] font-semibold tracking-[0.2em] uppercase text-[#475569]/50 mb-2"
+                    >
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      className="w-full bg-transparent border-b border-[#c8bfb4] py-3 text-sm text-[#1e293b] outline-none focus:border-[#d4564e] transition-colors duration-300 placeholder:text-[#475569]/30"
+                      placeholder="jan@email.com"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      className="block text-[10px] font-semibold tracking-[0.2em] uppercase text-[#475569]/50 mb-2"
+                    >
+                      Telefon
+                    </label>
+                    <input
+                      type="tel"
+                      className="w-full bg-transparent border-b border-[#c8bfb4] py-3 text-sm text-[#1e293b] outline-none focus:border-[#d4564e] transition-colors duration-300 placeholder:text-[#475569]/30"
+                      placeholder="+48 000 000 000"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      className="block text-[10px] font-semibold tracking-[0.2em] uppercase text-[#475569]/50 mb-2"
+                    >
+                      Wiadomość
+                    </label>
+                    <textarea
+                      rows={4}
+                      className="w-full bg-transparent border-b border-[#c8bfb4] py-3 text-sm text-[#1e293b] outline-none focus:border-[#d4564e] transition-colors duration-300 resize-none placeholder:text-[#475569]/30"
+                      placeholder="Opisz, jak mogę Ci pomóc..."
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="bg-[#1e293b] text-white text-sm font-medium px-8 py-3.5 hover:bg-[#d4564e] transition-colors duration-300 w-full lg:w-auto"
+                  >
+                    Wyślij wiadomość
+                  </button>
+                </form>
               </div>
             </div>
           </div>
         </div>
-        <div className="flex-1 bg-white px-6 lg:px-16 xl:px-24 py-20 lg:py-32">
-          <div className="max-w-xl">
-            <h3
-              className="text-2xl font-800 tracking-tight mb-8"
-              style={{ fontFamily: "Archivo, sans-serif" }}
-            >
-              Wyślij wiadomość
-            </h3>
-            <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
-              <div>
-                <label
-                  className="block text-[10px] font-600 tracking-[0.2em] uppercase text-[#1a3a2a]/40 mb-2"
-                  style={{ fontFamily: "Archivo, sans-serif" }}
-                >
-                  Imię i nazwisko
-                </label>
-                <input
-                  type="text"
-                  className="w-full border-b-2 border-[#1a3a2a]/10 bg-transparent py-3 text-sm font-400 text-[#1a3a2a] outline-none focus:border-[#e8a838] transition-colors duration-300 placeholder:text-[#1a3a2a]/20"
-                  placeholder="Jan Kowalski"
-                />
-              </div>
-              <div>
-                <label
-                  className="block text-[10px] font-600 tracking-[0.2em] uppercase text-[#1a3a2a]/40 mb-2"
-                  style={{ fontFamily: "Archivo, sans-serif" }}
-                >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  className="w-full border-b-2 border-[#1a3a2a]/10 bg-transparent py-3 text-sm font-400 text-[#1a3a2a] outline-none focus:border-[#e8a838] transition-colors duration-300 placeholder:text-[#1a3a2a]/20"
-                  placeholder="jan@email.com"
-                />
-              </div>
-              <div>
-                <label
-                  className="block text-[10px] font-600 tracking-[0.2em] uppercase text-[#1a3a2a]/40 mb-2"
-                  style={{ fontFamily: "Archivo, sans-serif" }}
-                >
-                  Telefon
-                </label>
-                <input
-                  type="tel"
-                  className="w-full border-b-2 border-[#1a3a2a]/10 bg-transparent py-3 text-sm font-400 text-[#1a3a2a] outline-none focus:border-[#e8a838] transition-colors duration-300 placeholder:text-[#1a3a2a]/20"
-                  placeholder="+48 000 000 000"
-                />
-              </div>
-              <div>
-                <label
-                  className="block text-[10px] font-600 tracking-[0.2em] uppercase text-[#1a3a2a]/40 mb-2"
-                  style={{ fontFamily: "Archivo, sans-serif" }}
-                >
-                  Wiadomość
-                </label>
-                <textarea
-                  rows={4}
-                  className="w-full border-b-2 border-[#1a3a2a]/10 bg-transparent py-3 text-sm font-400 text-[#1a3a2a] outline-none focus:border-[#e8a838] transition-colors duration-300 resize-none placeholder:text-[#1a3a2a]/20"
-                  placeholder="Opisz, jak mogę Ci pomóc..."
-                />
-              </div>
-              <button
-                type="submit"
-                className="bg-[#1a3a2a] text-white text-xs font-600 tracking-[0.2em] uppercase px-10 py-4 hover:bg-[#e8a838] transition-colors duration-300 w-full lg:w-auto"
-                style={{ fontFamily: "Archivo, sans-serif" }}
-              >
-                Wyślij wiadomość
-              </button>
-            </form>
-          </div>
-        </div>
       </section>
 
-      <footer className="bg-[#1a3a2a]">
-        <div className="flex flex-col lg:flex-row">
-          <div className="flex-1 px-6 lg:px-16 xl:px-24 py-16">
-            <div className="max-w-xl ml-auto">
+      <footer className="bg-[#1e293b]">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <div className="py-16 lg:flex lg:items-start lg:justify-between lg:gap-12">
+            <div className="mb-12 lg:mb-0">
               <span
-                className="text-xl font-900 tracking-tight text-white"
-                style={{ fontFamily: "Archivo, sans-serif" }}
+                className="text-xl font-medium tracking-tight text-white"
+                style={{ fontFamily: "'Newsreader', serif" }}
               >
-                MATMA.
+                matma<span className="text-[#d4564e]">.</span>
               </span>
-              <p className="text-sm font-300 text-white/30 mt-4 max-w-xs">
+              <p className="text-sm text-white/30 mt-4 max-w-xs leading-relaxed">
                 Korepetycje z matematyki. Indywidualne podejście, sprawdzone metody, realne efekty.
               </p>
               <div className="flex items-center gap-6 mt-8">
                 <a
                   href="#"
-                  className="text-xs font-500 tracking-[0.15em] uppercase text-white/30 hover:text-[#e8a838] transition-colors duration-300"
+                  className="text-xs font-medium tracking-[0.12em] uppercase text-white/30 hover:text-[#d4564e] transition-colors duration-300"
                 >
                   Facebook
                 </a>
                 <a
                   href="#"
-                  className="text-xs font-500 tracking-[0.15em] uppercase text-white/30 hover:text-[#e8a838] transition-colors duration-300"
+                  className="text-xs font-medium tracking-[0.12em] uppercase text-white/30 hover:text-[#d4564e] transition-colors duration-300"
                 >
                   Instagram
                 </a>
                 <a
                   href="#"
-                  className="text-xs font-500 tracking-[0.15em] uppercase text-white/30 hover:text-[#e8a838] transition-colors duration-300"
+                  className="text-xs font-medium tracking-[0.12em] uppercase text-white/30 hover:text-[#d4564e] transition-colors duration-300"
                 >
                   TikTok
                 </a>
               </div>
             </div>
-          </div>
-          <div className="flex-1 px-6 lg:px-16 xl:px-24 py-16 border-t lg:border-t-0 lg:border-l border-white/10">
-            <div className="max-w-xl">
-              <p
-                className="text-[10px] font-600 tracking-[0.3em] uppercase text-white/20 mb-6"
-                style={{ fontFamily: "Archivo, sans-serif" }}
-              >
+
+            <div>
+              <p className="text-[10px] font-semibold tracking-[0.3em] uppercase text-white/20 mb-6">
                 Nawigacja
               </p>
-              <div className="grid grid-cols-2 gap-x-8 gap-y-3">
+              <div className="grid grid-cols-2 gap-x-10 gap-y-3">
                 {navLinks.map((link) => (
                   <a
                     key={link.href}
                     href={link.href}
-                    className="text-sm font-400 text-white/40 hover:text-[#e8a838] transition-colors duration-300"
+                    className="text-sm text-white/40 hover:text-[#d4564e] transition-colors duration-300"
                   >
                     {link.label}
                   </a>
@@ -914,18 +1117,19 @@ export default function Design3() {
               </div>
             </div>
           </div>
-        </div>
-        <div className="border-t border-white/10 px-6 lg:px-16 xl:px-24 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs font-400 text-white/20">
-            {"\u00A9"} {new Date().getFullYear()} Korepetycje z Matematyki — Ola Matysek
-          </p>
-          <div className="flex items-center gap-6 text-xs font-400 text-white/20">
-            <a href="#" className="hover:text-[#e8a838] transition-colors duration-300">
-              Polityka prywatności
-            </a>
-            <a href="#" className="hover:text-[#e8a838] transition-colors duration-300">
-              Regulamin
-            </a>
+
+          <div className="border-t border-white/10 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-xs text-white/20">
+              {"\u00A9"} {new Date().getFullYear()} Korepetycje z Matematyki — Ola Matysek
+            </p>
+            <div className="flex items-center gap-6 text-xs text-white/20">
+              <a href="#" className="hover:text-[#d4564e] transition-colors duration-300">
+                Polityka prywatności
+              </a>
+              <a href="#" className="hover:text-[#d4564e] transition-colors duration-300">
+                Regulamin
+              </a>
+            </div>
           </div>
         </div>
       </footer>
