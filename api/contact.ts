@@ -16,8 +16,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   try {
     await resend.emails.send({
-      from: "Formularz amatysek.pl <onboarding@resend.dev>",
-      to: "dominikk.ilski@gmail.com",
+      from: "Formularz kontaktowy <kontakt@amatysek.pl>",
+      to: ["aleksandra.matysek@icloud.com", "dominikk.ilski@gmail.com"],
       subject: `Nowa wiadomość od ${name}`,
       html: `
         <h2>Nowa wiadomość z formularza kontaktowego</h2>
