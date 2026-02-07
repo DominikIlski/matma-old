@@ -95,19 +95,19 @@ const steps = [
 
 const testimonials = [
   {
-    name: "Anna Kowalska",
+    name: "Anna",
     context: "mama ucznia klasy 8",
     quote:
       "Syn miał poważne zaległości z matematyki i bał się egzaminu ósmoklasisty. Po trzech miesiącach regularnych lekcji nie tylko nadrobił braki, ale zaczął sam rozwiązywać trudniejsze zadania. Ogromna zmiana w podejściu do przedmiotu — polecam z całego serca.",
   },
   {
-    name: "Magdalena Wiśniewska",
+    name: "Magdalena",
     context: "mama maturzystki",
     quote:
       "Córka przygotowywała się do matury rozszerzonej i potrzebowała kogoś, kto wytłumaczy zagadnienia w przystępny sposób. Zajęcia były świetnie zorganizowane, a wyniki przeszły nasze oczekiwania. Matura zdana na 86% — jesteśmy bardzo wdzięczne!",
   },
   {
-    name: "Tomasz Nowak",
+    name: "Tomasz",
     context: "tata uczennicy liceum",
     quote:
       "Nasza córka zawsze miała problemy z geometrią i trygonometrią. Indywidualne podejście sprawiło, że w końcu zrozumiała te tematy. Ocena z matematyki poprawiła się z trojki na piątkę w ciągu jednego semestru. Profesjonalizm i cierpliwość na najwyższym poziomie.",
@@ -117,7 +117,7 @@ const testimonials = [
 const studentProfiles = [
   {
     label: "Uczniowie szkoły podstawowej",
-    detail: "klasy 4–8, budowanie solidnych fundamentów",
+    detail: "klasy 2–8, budowanie solidnych fundamentów",
   },
   {
     label: "Licealiści",
@@ -354,7 +354,7 @@ export default function Design3() {
           className="absolute inset-0 ruled-lines opacity-40"
           style={{ backgroundPositionY: "17px" }}
         />
-        <div className="absolute right-[4%] top-0 bottom-0 w-[1px] bg-[#d4564e]/40 hidden lg:block" />
+        <div className="absolute right-[4%] top-0 bottom-0 w-[2px] bg-[#d4564e]/40 hidden lg:block" />
 
         {marginFormulas.slice(0, 5).map((f, i) => (
           <span
@@ -429,7 +429,7 @@ export default function Design3() {
             </div>
             <div className="hidden lg:flex flex-1 items-center justify-center">
               <div
-                className="text-[#1e293b]/[0.08] leading-relaxed text-right space-y-3 select-none"
+                className="text-[#1e293b]/[0.15] leading-relaxed text-right space-y-3 select-none"
                 style={{ fontFamily: "'Newsreader', serif", fontStyle: "italic" }}
               >
                 <p className="text-5xl">a{"\u00B2"} + b{"\u00B2"} = c{"\u00B2"}</p>
@@ -738,7 +738,7 @@ export default function Design3() {
           className="absolute inset-0 ruled-lines opacity-20"
           style={{ backgroundPositionY: "8px" }}
         />
-        <div className="absolute right-[4%] top-0 bottom-0 w-[1px] bg-[#d4564e]/40 hidden lg:block" />
+        <div className="absolute right-[4%] top-0 bottom-0 w-[2px] bg-[#d4564e]/40 hidden lg:block" />
         <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-16">
             <SectionNumber num="04" />
@@ -958,18 +958,6 @@ export default function Design3() {
                 </div>
                 <div>
                   <p className="text-[10px] font-semibold tracking-[0.2em] uppercase text-[#475569]/40 mb-2">
-                    Telefon
-                  </p>
-                  <a
-                    href="tel:+48123456789"
-                    className="text-lg font-medium text-[#1e293b] hover:text-[#d4564e] transition-colors duration-300"
-                    style={{ fontFamily: "'Newsreader', serif" }}
-                  >
-                    +48 123 456 789
-                  </a>
-                </div>
-                <div>
-                  <p className="text-[10px] font-semibold tracking-[0.2em] uppercase text-[#475569]/40 mb-2">
                     Forma zajęć
                   </p>
                   <p
@@ -1095,26 +1083,6 @@ export default function Design3() {
               <p className="text-sm text-white/30 mt-4 max-w-xs leading-relaxed">
                 Korepetycje z matematyki. Indywidualne podejście, sprawdzone metody, realne efekty.
               </p>
-              <div className="flex items-center gap-6 mt-8">
-                <a
-                  href="#"
-                  className="text-xs font-medium tracking-[0.12em] uppercase text-white/30 hover:text-[#d4564e] transition-colors duration-300"
-                >
-                  Facebook
-                </a>
-                <a
-                  href="#"
-                  className="text-xs font-medium tracking-[0.12em] uppercase text-white/30 hover:text-[#d4564e] transition-colors duration-300"
-                >
-                  Instagram
-                </a>
-                <a
-                  href="#"
-                  className="text-xs font-medium tracking-[0.12em] uppercase text-white/30 hover:text-[#d4564e] transition-colors duration-300"
-                >
-                  TikTok
-                </a>
-              </div>
             </div>
 
             <div>
@@ -1135,18 +1103,10 @@ export default function Design3() {
             </div>
           </div>
 
-          <div className="border-t border-white/10 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="border-t border-white/10 py-6">
             <p className="text-xs text-white/20">
-              {"\u00A9"} {new Date().getFullYear()} Korepetycje z Matematyki — Ola Matysek
+              {"\u00A9"} {new Date().getFullYear()} Korepetycje z Matematyki — Aleksandra Matysek
             </p>
-            <div className="flex items-center gap-6 text-xs text-white/20">
-              <a href="#" className="hover:text-[#d4564e] transition-colors duration-300">
-                Polityka prywatności
-              </a>
-              <a href="#" className="hover:text-[#d4564e] transition-colors duration-300">
-                Regulamin
-              </a>
-            </div>
           </div>
         </div>
       </footer>
