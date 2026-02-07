@@ -17,7 +17,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     await resend.emails.send({
       from: "Formularz amatysek.pl <onboarding@resend.dev>",
-      to: ["aleksandra.matysek@icloud.com", "dominikk.ilski@gmail.com"],
+      to: "dominikk.ilski@gmail.com",
       subject: `Nowa wiadomość od ${name}`,
       html: `
         <h2>Nowa wiadomość z formularza kontaktowego</h2>
@@ -32,6 +32,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     return res.status(200).json({ success: true });
   } catch (error) {
-    return res.status(500).json({ error: "Nie udało się wysłać wiadomości" });
+    console.error("Resend error:", error);
+    return res.status(500).json({ error: "Nie udało się wysłać wiadomości", details: String(error) });
   }
 }
