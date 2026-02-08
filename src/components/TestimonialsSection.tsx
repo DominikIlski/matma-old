@@ -26,7 +26,7 @@ export default function TestimonialsSection() {
           </span>
         </h2>
         <p className="text-base text-[#475569] leading-relaxed max-w-lg mb-16">
-          Prawdziwe opinie rodziców, którzy zaufali mojej metodzie pracy.
+          Opinie rodziców, z którymi pracowałam.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

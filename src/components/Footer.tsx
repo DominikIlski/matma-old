@@ -10,7 +10,7 @@ export default function Footer() {
               amatysek<span className="text-[#d4564e]">.</span>
             </span>
             <p className="text-sm text-white/50 mt-4 max-w-xs leading-relaxed">
-              Korepetycje z matematyki. Indywidualne podejście, sprawdzone metody, realne efekty.
+              Korepetycje z matematyki. Uczę tak, jak potrzebujesz.
             </p>
             <a
               href={`mailto:${CONTACT_EMAIL}`}

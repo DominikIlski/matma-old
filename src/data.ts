@@ -18,7 +18,7 @@ export const exams = [
     duration: "125 minut",
     points: "maks. 30 punktów",
     description:
-      "Egzamin obejmuje materiał z klas 4–8: arytmetykę, algebrę, geometrię, analizę danych, matematykę stosowaną oraz elementy funkcji. To pierwszy poważny sprawdzian wiedzy matematycznej — warto się do niego solidnie przygotować.",
+      "Egzamin obejmuje materiał z klas 4–8: arytmetykę, algebrę, geometrię, analizę danych, matematykę stosowaną oraz elementy funkcji. To pierwszy egzamin, który się liczy — dobrze jest się do niego przygotować.",
     topics: [
       "Arytmetyka i liczby",
       "Wyrażenia algebraiczne",
@@ -47,12 +47,12 @@ export const exams = [
   },
   {
     title: "Matura Rozszerzona",
-    subtitle: "Dla ambitnych — klucz do wymarzonej uczelni",
+    subtitle: "Dla tych, którzy chcą iść na studia ścisłe",
     date: "Maj 2026",
     duration: "180 minut",
     points: "maks. 50 punktów",
     description:
-      "Arkusz rozszerzony składa się z 10–14 zadań otwartych wymagających pełnych rozwiązań. To egzamin decydujący o wynikach rekrutacji na najlepsze kierunki ścisłe i techniczne.",
+      "Arkusz rozszerzony składa się z 10–14 zadań otwartych wymagających pełnych rozwiązań. Ten wynik wpływa na to, czy dostaniesz się tam, gdzie chcesz.",
     topics: [
       "Liczby rzeczywiste i wyrażenia algebraiczne",
       "Równania, nierówności i układy",
@@ -71,25 +71,25 @@ export const steps = [
     number: "01",
     title: "Bezpłatna konsultacja",
     description:
-      "Podczas krótkiej rozmowy poznaję potrzeby ucznia, omawiamy cele i ustalamy plan współpracy. Bez zobowiązań.",
+      "Krótka rozmowa — dowiem się, czego potrzebujesz i jak mogę pomóc. Nie zobowiązuje do niczego.",
   },
   {
     number: "02",
     title: "Diagnoza poziomu",
     description:
-      "Sprawdzam aktualny poziom wiedzy, identyfikuję luki i mocne strony. To fundament skutecznej nauki.",
+      "Sprawdzam, co już umiesz, czego nie — żeby wiedzieć, od czego zacząć.",
   },
   {
     number: "03",
     title: "Indywidualny plan nauki",
     description:
-      "Tworzę spersonalizowany program dopasowany do tempa ucznia, celów egzaminacyjnych i dostępnego czasu.",
+      "Układamy to, co będziemy robić — w tempie, które ma sens dla Ciebie.",
   },
   {
     number: "04",
     title: "Regularne lekcje i postępy",
     description:
-      "Systematyczna praca przynosi efekty. Monitoruję postępy i dostosowuję plan, by osiągnąć najlepsze wyniki.",
+      "Spotykamy się regularnie. Widzę, co idzie, co nie — i zmieniam podejście, jeśli trzeba.",
   },
 ];
 
@@ -98,19 +98,19 @@ export const testimonials = [
     name: "Anna",
     context: "mama ucznia klasy 8",
     quote:
-      "Syn miał poważne zaległości z matematyki i bał się egzaminu ósmoklasisty. Po trzech miesiącach regularnych lekcji nie tylko nadrobił braki, ale zaczął sam rozwiązywać trudniejsze zadania. Ogromna zmiana w podejściu do przedmiotu — polecam z całego serca.",
+      "Syn wreszcie przestał panikować przed matmą i zaczął rozumieć co pisze. Przed ósmą klasą wyniki mu się poprawiły i sam się brał za zadania, co wcześniej było nie do pomyślenia. Ola naprawdę wie jak wytłumaczyć żeby dzieciak to zrozumiał.",
   },
   {
     name: "Magdalena",
     context: "mama maturzystki",
     quote:
-      "Córka przygotowywała się do matury rozszerzonej i potrzebowała kogoś, kto wytłumaczy zagadnienia w przystępny sposób. Zajęcia były świetnie zorganizowane, a wyniki przeszły nasze oczekiwania. Matura zdana na 86% — jesteśmy bardzo wdzięczne!",
+      "Ola naprawdę pomogła mojej córce przed maturą rozszerzoną. Wreszcie zrozumiała te trudniejsze tematy, a egzamin zdała na 86%. Polecam z czystym sumieniem!",
   },
   {
     name: "Tomasz",
     context: "tata uczennicy liceum",
     quote:
-      "Nasza córka zawsze miała problemy z geometrią i trygonometrią. Indywidualne podejście sprawiło, że w końcu zrozumiała te tematy. Ocena z matematyki poprawiła się z trojki na piątkę w ciągu jednego semestru. Profesjonalizm i cierpliwość na najwyższym poziomie.",
+      "Córka miała problem z geometrią i trygonometrią — oceny szły w dół, atmosfera w domu gęstniała. Po korepetycjach z Olą sprawy odwróciły się o 180 stopni: z trójki na piątkę w jeden semestr. Polecam, bo widać efekt.",
   },
 ];
 
@@ -154,10 +154,10 @@ export const stationaryFeatures = [
 ];
 
 export const bioParas = [
-  "Cześć, mam na imię Ola! Jestem studentką matematyki z prawdziwą pasją do tego przedmiotu. Od ponad roku prowadzę korepetycje — zarówno indywidualne, jak i grupowe — pomagając uczniom na różnych etapach edukacji odnaleźć drogę przez zawiłości matematyki.",
-  "Doświadczenie zdobywałam między innymi w Matplanecie — jednej z najbardziej rozpoznawalnych szkół matematycznych w Polsce. To tam odkryłam, że uczniowie wracają nie ze względu na markę szkoły, ale na relację z konkretnym nauczycielem. Rodzice i uczniowie wybierali moje zajęcia ponownie — bo czuli, że naprawdę rozumiem, z czym uczeń się mierzy.",
-  "Mam dar dostrzegania tego, co umyka innym — potrafię szybko zidentyfikować, w którym momencie uczeń się gubi i dlaczego. To pozwala mi trafiać w sedno problemu zamiast tracić czas na powtarzanie tego, co już działa. Właśnie dlatego zdecydowałam się działać na własnych zasadach — by poświęcić każdemu uczniowi tyle uwagi, ile naprawdę potrzebuje.",
-  "Prowadzę zajęcia zarówno online, jak i stacjonarnie — bo wierzę, że wygodna forma nauki to fundament skutecznych korepetycji. Niezależnie od tego, czy pracujemy przez interaktywną tablicę, czy spotykamy się osobiście, cel jest zawsze ten sam: zrozumienie, pewność siebie i lepsze wyniki.",
+  "Cześć! Jestem Ola, studiuję matematykę i od ponad roku pomagam uczniom ogarnąć ten przedmiot — prowadzę korepetycje zarówno indywidualne, jak i w małych grupach. Zajęcia prowadzę online i stacjonarnie, bo każdemu pasuje coś innego.",
+  "Przez jakiś czas pracowałam w Matplanecie i to było super doświadczenie — ale zauważyłam jedną rzecz: uczniowie wracali do konkretnych nauczycieli, nie do marki. Rodzice wybierali ponownie moje zajęcia, bo widzieli, że naprawdę rozumiem, z czym ich dziecko ma problem. To dało mi dużo do myślenia.",
+  "Umiem dość szybko wyczuć, w którym momencie ktoś się gubi i czemu akurat tam. Zamiast gadać godzinami o rzeczach, które już działają, wolę trafić w to, co naprawdę blokuje — i to właśnie działa. Dlatego teraz prowadzę zajęcia na własnych zasadach, żeby móc dać każdemu uczniowi tyle czasu i uwagi, ile faktycznie potrzebuje.",
+  "Nieważne, czy pracujemy przez tablicę online, czy spotykamy się na żywo — chodzi o to samo: żebyś zrozumiał temat, poczuł się pewniej i zobaczył efekty. Jeśli szukasz kogoś, kto nie będzie Cię tylko odpytywać z tego, co już umiesz, to możemy pogadać.",
 ];
 
 export const stats = [

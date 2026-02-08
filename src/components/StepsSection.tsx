@@ -30,7 +30,7 @@ export default function StepsSection() {
           </span>
         </h2>
         <p className="text-base text-[#475569] leading-relaxed max-w-lg mb-16">
-          Każda współpraca zaczyna się od poznania Twoich potrzeb i kończy na wymiernych efektach.
+          Najpierw rozmawiamy, potem wiem, jak uczyć.
         </p>
 
         <div className="relative">

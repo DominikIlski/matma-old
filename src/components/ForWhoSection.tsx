@@ -26,7 +26,7 @@ export default function ForWhoSection() {
               </span>
             </h2>
             <p className="text-base text-[#475569] leading-relaxed">
-              Zajęcia dopasowuję do poziomu, celów i stylu nauki każdego ucznia.
+              Na lekcjach robię to, co działa właśnie dla Ciebie.
             </p>
           </div>
 

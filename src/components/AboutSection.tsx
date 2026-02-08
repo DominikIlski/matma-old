@@ -74,11 +74,6 @@ export default function AboutSection() {
                 </p>
               ))}
             </div>
-            <blockquote className="mt-10 pl-6 border-l-2 border-[#d4564e]/40">
-              <p className="font-serif-head text-lg lg:text-xl italic text-[#1e293b]/80 leading-relaxed">
-                {"\u201E"}Najważniejsze to zauważyć, w którym momencie uczeń się gubi — reszta to już wspólna praca.{"\u201D"}
-              </p>
-            </blockquote>
           </div>
         </div>
       </div>
