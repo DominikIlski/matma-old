@@ -14,6 +14,12 @@ dist-ssr
 .env
 .env.*
 
+# Audit/screenshot artifacts
+*.png
+!public/*.png
+*.txt
+viewport-*.md
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
